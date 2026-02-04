@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    #fred {
+      position: absolute;
+      top: 100px;
+      left: 100px;
+      width: 60px;
+      height: 60px;
+      background-image: url(mats/fred_move.png);
+      background-position: 0 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Überschrift</h1>
+  <div id="fred"></div>
+  <div id="ausgabe"></div>
+  <script>
+
+    let position = [100, 100]
+    /*
+      position[0] = x-position von fred   left
+      position[1] = y-position von fred   top
+    */
+    let schritt = 6
+
+    document.addEventListener('keydown', function (evt) {
+      document.getElementById('ausgabe').innerHTML = evt.which
+      let fred = document.getElementById('fred')
+
+      switch (evt.which) {
+        case 37:
+        case 65:
+          // Schritt nach links
+          position[0] -= schritt
+          fred.style.backgroundPosition = '0 -64px'
+          break
+        case 38:
+        case 87:
+          // Schritt nach oben
+          position[1] -= schritt
+          fred.style.backgroundPosition = '0 -192px'
+          break
+        case 39:
+        case 68:
+          // Schritt nach rechts
+          position[0] += schritt
+          fred.style.backgroundPosition = '0 -128px'
+          break
+        case 40:
+        case 83:
+          // Schritt nach unten
+          position[1] += schritt
+          fred.style.backgroundPosition = '0 0'
+      }
+      fred.style.left =  position[0] + 'px'
+      fred.style.top =  position[1] + 'px'
+
+    })
+
+
+  </script>
+</body>
+
+</html>

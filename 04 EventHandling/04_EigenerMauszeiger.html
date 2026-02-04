@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    html {
+      cursor: none;
+    }
+    #pointer {
+      position: fixed;
+      cursor: none;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Internetseite mit eigenem Mauszeiger</h1>
+  <img id="pointer" src="mats/cursor-png-1107.png" alt="" width="40">
+  <script>
+    document.addEventListener('mousemove', function (event) {
+      document.getElementById('pointer').style.top = event.pageY + 'px'
+      document.getElementById('pointer').style.left = event.pageX + 'px'
+    })
+    document.addEventListener('mouseout', function () {
+      document.getElementById('pointer').style.display = 'none'
+    })
+    document.addEventListener('mouseover', function () {
+      document.getElementById('pointer').style.display = 'block'
+    })
+    
+  </script>
+</body>
+
+</html>

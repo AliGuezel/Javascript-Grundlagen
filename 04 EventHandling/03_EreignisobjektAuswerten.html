@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    img {float:right}
+    .rahmen {
+      border: 5px solid red;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="Überschrift">Ereignisobjekt auswerten</h1>
+  <img id="Bild" src="img/hund.jpg" alt="">
+  <form action="http://www.theexpert.eu/get.php">
+      <input id="Texteingabe" name="Name" placeholder="Ihr Name" required>
+      <button id="Schaltfäche">absenden</button>
+  </form>
+  <p><a id="Link" href="https://www.google.de">Dies ist ein Link</a></p>
+  <h2 id="Überschrift2">Die Ereignis-Eigenschaften</h2>
+  <div id="ausgabe"></div>
+  <script>
+
+    document.getElementById('Texteingabe').addEventListener ('input', function (evt) {
+      let ausgabe = document.getElementById('ausgabe')
+      let text = 'input<br>'
+      for (eigenschaft in evt) {
+        text += eigenschaft + ' | ' +  evt[eigenschaft] + '<br>'
+      }
+      ausgabe.innerHTML = text
+    }) 
+
+    document.images[0].addEventListener('click', function(evt){
+      evt.stopPropagation() // stopPropagation verhinder die Weitergabe des Events (bubbling) an die Vorfahren-Elemente im DOM
+      document.images[0].classList.toggle('rahmen')
+    })
+
+    document.addEventListener('click', function (evt) {
+      evt.preventDefault() // Verhindert die Standardaktion des Klicks, z.B. Absenden des Formulars oder Aufrufen des Links
+      let ausgabe = document.getElementById('ausgabe')
+      let text = 'Klick<br>'
+      text += evt.target.id + '<hr>'
+      for (eigenschaft in evt) {
+        text += eigenschaft + ' | ' +  evt[eigenschaft] + '<br>'
+      }
+      ausgabe.innerHTML = text
+    })
+
+    document.addEventListener('mousemove', function(evt){
+      let ausgabe = document.getElementById('ausgabe')
+      let text = 'Mousemove<br>'
+      text += evt.target.id + '<hr>'
+      for (eigenschaft in evt) {
+        text += eigenschaft + ' | ' +  evt[eigenschaft] + '<br>'
+      }
+      ausgabe.innerHTML = text
+    })
+    
+    document.addEventListener('keydown', function(evt){
+      let ausgabe = document.getElementById('ausgabe')
+      let text = 'keydown<br>'
+      for (eigenschaft in evt) {
+        text += eigenschaft + ' | ' +  evt[eigenschaft] + '<br>'
+      }
+      ausgabe.innerHTML = text
+    })
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    #ausgabe {
+      border: 1px inset gray;
+      background: rgb(222,222,222);
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Zugriff auf Elemente</h1>
+  <p id="absatz">das ist der erste Absatz</p>
+  <p class="absatz">das ist der zweite Absatz</p>
+  <p class="absatz">das ist der dritte Absatz</p>
+  <form name="Textformular">
+    <p><input id="name" value="Dominic"></p>
+  </form>
+  <img height="100" src="https://www.bussgeldkatalog.org/wp-content/uploads/nutztierhaltung-300x200.jpg" alt="">
+  <img height="100" src="https://cdn.pixabay.com/photo/2019/06/24/07/24/animals-4295395_960_720.jpg" alt="">
+  <img height="100" src="https://www.bmel.de/SharedDocs/Bilder/DE/_Tiere/Nutztiere/Glueckliche_Kuh_mit_Kalb.jpg?__blob=wide&v=3" alt="">
+  <a href="https://www.wikipedia.org">Wikipedia</a>
+  <a href="https://www.google.de">Google</a>
+  <hr>
+  <div id="ausgabe"></div>
+
+  <script>
+    
+    let ausgabe = ''
+    ausgabe += '<p>Zugriff auf den ersten Absatz mit <strong>.getElementById()</strong> </p>'
+    ausgabe +=  document.getElementById('absatz').innerHTML
+    
+    ausgabe +=  '<p>Zugriff auf den zweiten Absatz mit <strong>.getElementsByClassName()</strong> </p>'
+    ausgabe +=  document.getElementsByClassName('absatz')[0].innerHTML
+
+    ausgabe +=  '<p>Zugriff auf den dritten Absatz mit <strong>.getElementsByTagName()</strong> </p>'
+    ausgabe +=  document.getElementsByTagName('p')[2].innerHTML
+
+    ausgabe +=  '<p>Zugriff auf den ersten Absatz mit <strong>querySelector()</strong> </p>'
+    ausgabe +=  document.querySelector('p').innerHTML
+
+    ausgabe +=  '<p>Zugriff auf den dritten Absatz mit <strong>querySelectorAll()</strong> </p>'
+    ausgabe +=  document.querySelectorAll('.absatz')[1].innerHTML
+
+    // Auf einge Elemente auf einer WebSeite kann über vordefinierte Objektfelder zugegriffen werden,
+    // dazu gehören Formulare, Bilder und Links
+    ausgabe +=  '<p>Zugriff auf das erste Formularelement <strong>forms[].elements[]</strong> </p>'
+    ausgabe += document.forms[0].elements[0].value
+
+    ausgabe +=  '<p>Zugriff auf das dritte Bild <strong>images[]</strong> </p>'
+    ausgabe += document.images[2].src
+
+    ausgabe +=  '<p>Zugriff auf das zweite Link <strong>links[]</strong> </p>'
+    ausgabe += document.links[1].innerHTML
+
+    document.getElementById('ausgabe').innerHTML = ausgabe
+    
+  </script>
+</body>
+</html>
+
+<!--
+  de https://wiki.selfhtml.org/wiki/JavaScript/DOM/Document
+  en https://www.freecodecamp.org/news/how-to-manipulate-the-dom-beginners-guide/
+-->

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body>
+  <h1>Datentypen</h1>
+  <script>
+   /*
+      JavaScript kennt 7 Datentype
+      6 primitve Datentypen
+      1 komplexen Datentyp
+    */
+
+    // Boolean() für einen Wahrheitswert
+    // Die Variable kennt nur 2 Zustände: true, false
+    let zustimmung = true
+
+    // Number() für einen Zahlenwert
+    let zahl = 4.5
+
+    // String() für einen Text
+    let text = "Hallo Welt"
+    let text2 = 'Hallo Welt'
+  
+    // Symbol()
+    let schluessel = Symbol()
+
+    // Undefined: eine Variable die deklariert wurde, aber nicht initialisiert, hat den Wert: undefined
+    let vorname
+
+    // Null: spezeiller Wert für eine leeres Objekt
+
+    // Object() - für alle JavaScript-Objekte
+    // z.B.: eine Funktion oder eine Klassenobjekt, wie z.B. ein Datums-Objekt
+
+    let datum = new Date()
+    document.write(datum)
+
+    // Abfrage des Datentyps mit typeof
+    document.write( '<p>' + typeof text)
+  </script>
+</body>
+
+</html>
+
+<!--
+  de https://developer.mozilla.org/de/docs/Web/JavaScript/Data_structures
+  en https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures
+-->

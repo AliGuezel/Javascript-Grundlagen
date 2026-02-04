@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    span {
+      padding-left: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Das Array Objekt</h1>
+  <script>
+    /* Indizierte Arrays */
+    let zahlen = new Array (1, 2 , 3, 4 ,5)
+    let zahlen2 = [6, 1, 3, 9, 7]
+
+    let testdaten = ['Dominic', 51, new Date(1971, 7, 3)]
+
+    document.write('<p>' + zahlen)
+    document.write('<p>' + zahlen2)
+    document.write('<p>' + testdaten)
+    document.write('<p>' + zahlen2[2])
+    document.write('<p>' + testdaten[1])
+    document.write('<p>Anzahl der Zahlen in zahlen: ' + zahlen.length + '<hr>')
+
+      
+    /* Assoziative Arrays */
+    let testdaten2 = new Array()
+    testdaten2['vorname'] = 'Dominic'
+    testdaten2['alter'] = 51
+    testdaten2['geburtsdatum'] =  new Date(1971, 7, 3)
+    document.write('<p>' + testdaten2['vorname'])
+    document.write('<p>' + testdaten2['alter'])
+    document.write('<p>' + testdaten2.vorname)
+    document.write('<p>' + testdaten2.alter)
+    document.write('<p>Anzahl der Element in testdaten2: ' + testdaten2.length + '<hr><hr>')
+  
+    let x = [1, 2, 3, 4 ,5]
+    let y = [6, 1, 3, 9, 7]
+    let z = []
+    // concat()  verknüpft die Elemente mehrerer Arrays
+    document.write('<p><span>X: ' + x + '</span><span>Y: ' + y + '</span><span>Z: ' + z + '</span>')
+    z = x.concat(y)
+
+    document.write('<p><span>X: ' + x + '</span><span>Y: ' + y + '</span><span>Z: ' + z + '</span>')
+    // join()  wandelt ein Array in einen  String um
+    document.write('<p>' + x.join(' - ') )
+
+    // pop() entfernt das letzte element eines Array
+    document.write('<p>' + x.pop() )
+    document.write('<p><span>X: ' + x + '</span>')
+    x.push(6)
+    document.write('<p><span>X: ' + x + '</span>')
+    document.write('<p>' + x.shift() )
+    document.write('<p><span>X: ' + x + '</span>')
+    x.unshift(8)
+    document.write('<p><span>X: ' + x + '</span>')
+    x.reverse()
+    document.write('<p><span>X: ' + x + '</span>')
+    x.sort()
+    document.write('<p><span>X: ' + x + '</span>')
+    document.write('<p><span>x.slice(-3): ' + x.slice(-3) + '</span>')
+    document.write('<p><span>X: ' + x + '</span>')
+    
+  </script>
+</body>
+
+</html>
+
+<!--
+  de https://wiki.selfhtml.org/wiki/JavaScript/Objekte/Array
+  en https://www.w3schools.com/js/js_arrays.asp
+-->

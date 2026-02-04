@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    td, th {
+      text-align: center;
+      border:1px solid gray;
+      padding: 2px 5px;
+      cursor:pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Aufgabe 13</h1>
+  <h2>ein-mal-eins</h2>
+  <table>
+    <tr><th>X<th>1<th>2<th>3<th>4<th>5<th>6<th>7<th>8<th>9<th>10
+  <script>
+    for (let zeile = 1; zeile <= 10; zeile++) {
+      document.write('<tr><th>' + zeile)
+      for (let spalte = 1; spalte <= 10; spalte++) {
+        document.write('<td>' + zeile * spalte )
+      }  
+    }
+  </script>
+  </table>
+  <hr>
+  <table>
+  <script>
+    for (let zeile = 1; zeile <= 10; zeile++) {
+      document.write('<tr>')
+      for (let spalte = 1; spalte <= 10; spalte++) {
+        document.write('<td>' + zeile + ' x ' + spalte + ' = ' + zeile * spalte )
+      }  
+    }
+  </script>
+  </table>
+</body>
+
+</html>

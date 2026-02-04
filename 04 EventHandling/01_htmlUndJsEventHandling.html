@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <script>
+
+    function anzeigen(text) {
+      document.querySelector('figcaption').innerHTML = text
+    }
+    function leeren() {
+      document.querySelector('figcaption').innerHTML = ''
+      document.querySelectorAll('figcaption')[1].innerHTML = ''
+    }
+
+
+   
+
+    window.onload = function () {
+
+      document.querySelectorAll('img')[1].onmouseover =  function () {anzeigen2('Klasse Hund')}
+      document.querySelectorAll('img')[1].onmouseout = leeren      
+
+      function anzeigen2(text) {
+        document.querySelectorAll('figcaption')[1].innerHTML = text
+      }
+
+    }
+  </script>
+</head>
+
+<body>
+  <h1>Ereignisbehandlung in HTML und JavaScript</h1>
+  <figure>
+    <img src="img/katze.jpg" alt="" onmouseover="anzeigen('tolle Katze Text')" onmouseout="leeren()">
+    <figcaption></figcaption>
+  </figure>
+  <figure>
+    <img src="img/hund.jpg" alt="">
+    <figcaption></figcaption>
+  </figure>
+</body>
+
+</html>

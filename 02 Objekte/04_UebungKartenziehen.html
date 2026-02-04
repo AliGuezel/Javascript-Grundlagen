@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body>
+  <h1>Kartenziehen</h1>
+  <script>
+    /* 7, 8, 9, 10, Bube, Dame, König, As  - Karo, Pik, Herz, Kreuz  */
+    // 32 Karten in ein Array legen
+
+    let kartenWerte = ['7', '8', '9', '10', 'Bube', 'Dame', 'König', 'As']
+    let kartenFarben = ['Karo', 'Pik', 'Herz', 'Kreuz']
+    let kartenSpiel = []
+    /*
+    for (let i = 0; i < kartenWerte.length; i++) {
+      for (let j = 0; j < kartenFarben.length; j++) {
+        kartenSpiel.push(kartenFarben[j] + ' ' + kartenWerte[i])
+      }
+    }
+    */
+    for (let wert in kartenWerte) {
+      for(let farbe in kartenFarben) {
+        kartenSpiel.push(kartenFarben[farbe] + ' ' + kartenWerte[wert])
+      }
+    }
+    // Spieler 1 zieht Karte - ein zufälliges Element wird aus dem Array entnommen.
+    let zufall1 = Math.floor(Math.random()*kartenSpiel.length)
+    let spieler1 =  kartenSpiel.splice(zufall1, 1)
+ 
+    document.write('<p>Der erste Spieler zieht: ' + spieler1 + '</p>')
+   
+
+    // Computer zieht Karte - ein zufälliges Element wird aus dem Array entnommen.
+    let zufall2 = Math.floor(Math.random()*kartenSpiel.length)
+    let computer =  kartenSpiel.splice(zufall2, 1)
+    document.write('<p>Der Computer zieht: ' + computer )
+  
+    // Ausgabe, wer gewonnen hat.
+    if (zufall2 >= zufall1) {
+      document.write('<p>Der Computer hat gewonnen')
+    } else {
+      document.write('<p>Der Spieler hat gewonnen')
+    }
+    /*
+    function mischen (karten) {
+      for (let i = 1; i < 1000; i++) {
+        karten.push(karten.splice(Math.floor(Math.random()*karten.length), 1))
+      }
+      return karten
+    }
+
+    document.write('<p>' + mischen(kartenSpiel))
+    */
+  </script>
+</body>
+
+</html>

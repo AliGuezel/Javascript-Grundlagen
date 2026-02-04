@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Schere Stein Parier</title>
+  <style>
+  h1 {
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+    color: darkred;
+  }
+  div {
+    text-align: center;
+  }
+  img.computer{
+    transform: scaleX(-1);
+  }
+  </style>
+</head>
+
+<body>
+  <h1>Schere-Stein-Parier-Spiel</h1>
+  <div>
+<img onclick="spielen(1)" id="schere" src="img/pic_schere.jpg">
+<img onclick="spielen(2)" id="stein" src="img/pic_stein.jpg">
+<img onclick="spielen(3)" id="papier" src="img/pic_papier.jpg">
+</div>
+<br>
+<div>
+    <img id="spieler" src="img/schere.jpg">
+    <img class="computer" id="computer" src="img/stein.jpg">
+</div>
+<br>
+<h2 id="ergebnis"></h2>
+
+<script>
+
+function spielen(wahl){
+   let comwahl = Math.floor(Math.random()*3)+1
+   let erg = wahl.toString() + comwahl.toString()
+   
+
+   switch(Number(erg)){
+    case 11: 
+        document.getElementById("spieler").setAttribute("src", "img/schere.jpg")
+        document.getElementById("computer").setAttribute("src", "img/schere.jpg")
+        document.getElementById("ergebnis").innerHTML = "UNENTSCHIEDEN"
+    break;
+
+    case 12: 
+        document.getElementById("spieler").setAttribute('src', 'img/schere.jpg')
+        document.getElementById("computer").setAttribute("src", "img/stein.jpg")
+        document.getElementById("ergebnis").innerHTML = "VERLOREN"
+    break;
+
+    case 13:
+        document.getElementById("spieler").setAttribute('src', 'img/schere.jpg')
+        document.getElementById("computer").setAttribute("src", "img/papier.jpg")
+        document.getElementById("ergebnis").innerHTML = "GEWONNEN"
+    break;
+
+    case 21: 
+        document.getElementById("spieler").setAttribute('src', 'img/stein.jpg')
+        document.getElementById("computer").setAttribute("src", "img/schere.jpg")
+        document.getElementById("ergebnis").innerHTML = "GEWONNEN"
+    break;
+
+    case 22: 
+         document.getElementById("spieler").setAttribute('src', 'img/stein.jpg')
+         document.getElementById("computer").setAttribute("src", "img/stein.jpg")
+         document.getElementById("ergebnis").innerHTML = "UNENTSCHIEDEN"
+    break;
+
+    case 23:
+        document.getElementById("spieler").setAttribute('src', 'img/stein.jpg')
+        document.getElementById("computer").setAttribute("src", "img/papier.jpg")
+        document.getElementById("ergebnis").innerHTML = "VERLOREN"
+    break;
+
+    case 31:
+        document.getElementById("spieler").setAttribute('src', 'img/papier.jpg')
+        document.getElementById("computer").setAttribute("src", "img/schere.jpg")
+        document.getElementById("ergebnis").innerHTML = "VERLOREN"
+    break;
+
+    case 32:
+        document.getElementById("spieler").setAttribute('src', 'img/papier.jpg')
+        document.getElementById("computer").setAttribute("src", "img/stein.jpg")
+        document.getElementById("ergebnis").innerHTML = "GEWONNEN"
+    break;
+
+    case 33: 
+        document.getElementById("spieler").setAttribute('src', 'img/papier.jpg')
+        document.getElementById("computer").setAttribute("src", "img/papier.jpg")
+        document.getElementById("ergebnis").innerHTML = "UNENTSCHIEDEN"
+    break;
+   }
+}
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    body {
+      color: #FFFFFF;
+      background: darkgreen;
+    }
+    #ausgabe {
+      margin: 50px;
+      font-size: 40px;
+    }
+    #historie {
+      border: 2px inset gray;
+      width: 70px;
+      height: 80vh;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      overflow: hidden;
+      background: white;;
+    }
+    #historie span {
+      font-size: 24px;
+      display: block;
+      text-align: center;
+      border-bottom: 1px solid gray;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Roulettspiel</h1>
+  <button onclick="spielen()">Roulette spielen</button>
+  <img src="img/roulette.png" alt="Ein Roulett-Tisch" usemap="#roulette">
+  
+  <map name="roulette">
+    <area shape="poly" coords="26, 326, 126, 328, 126, 460, 26, 441" href="javascript:einsatz('noir')" title="NOIR">
+    <area shape="poly" coords="376, 326, 377, 438, 275, 459, 275, 328" href="javascript:einsatz('rouge')" title="ROUGE">
+    <area shape="poly" coords="276, 58, 377, 79, 378, 191, 276, 190" href="javascript:einsatz('manque')" title="MANQUE">
+    <area shape="poly" coords="25, 79, 125, 61, 125, 194, 24, 195" href="javascript:einsatz('passe')" title="PASSE">
+    <area shape="rect" coords="276, 191, 377, 326" href="javascript:einsatz('impair')" title="IMPAIR">
+    <area shape="rect" coords="26, 195, 124, 324" href="javascript:einsatz('pair')" title="PAIR">
+  </map>
+
+  <div id="ausgabe"></div>
+  <div id="historie"></div>
+  <script>
+    let guthaben = 1000
+    let farben = ['green', 'red', 'black', 'red','black', 'red','black', 'red','black', 'red', 'black','black', 'red','black', 'red','black', 'red','black', 'red', 'red' ,'black', 'red','black', 'red','black', 'red','black', 'red', 'black' ,'black', 'red','black', 'red','black', 'red','black', 'red']
+
+    function einsatz (art) {
+      guthaben -= 50
+      let zahl = spielen()
+      if (art === 'noir') {
+        if (farben[zahl] == 'black') {
+          guthaben += 100
+          window.alert('Du hast gewonnen. Guthaben:' + guthaben)
+        } else {
+          window.alert('Du hast verloren. Guthaben:' + guthaben)
+        }
+      }
+
+    }
+    
+
+    function spielen () {
+      if (document.querySelector('#ausgabe span') !== null) {
+        document.getElementById('historie').innerHTML = document.querySelector('#ausgabe span').outerHTML + document.getElementById('historie').innerHTML
+      }
+      let zufall = Math.floor(Math.random()*37)
+      let ausgabe = (zufall === 0) ? '<span style="color:' + farben[zufall] + '">ZERO</span>' : '<span style="color:' + farben[zufall] + '">' + zufall + '</span>'
+      
+      if (zufall !== 0) {
+        ausgabe += (zufall > 18) ? '<br>PASSE' : '<br>MANQUE'
+        ausgabe += (zufall % 2 === 0) ?  '<br>PAIR' :  '<br>IMPAIR'
+        ausgabe += (farben[zufall] === 'red') ? '<br>ROUGE' : '<br>NOIR'
+      }
+
+      document.getElementById('ausgabe').innerHTML = ausgabe
+
+      return (zufall)
+      /*
+      if (zufall === 0) {
+        ausgabe = 'ZERO'
+      } else {
+        ausgabe = zufall
+      }
+
+      if (zufall > 18) {
+        ausgabe += '<br>PASSE'
+      } else if (zufall > 0) {
+        ausgabe += '<br>MANQUE'
+      }
+
+      if (zufall !== 0) {
+        if (zufall % 2 === 0) {
+          ausgabe += '<br>PAIR'
+        } else {
+          ausgabe += '<br>IMPAIR'
+        }
+      }
+
+      if (zufall !== 0) {
+        if (farben[zufall] === 'red') {
+          ausgabe += '<br>ROUGE'
+        } else {
+          ausgabe += '<br>NOIR'
+        }
+      }
+      document.getElementById('ausgabe').innerHTML = ausgabe
+      */
+    }
+
+  </script>
+</body>
+
+</html>

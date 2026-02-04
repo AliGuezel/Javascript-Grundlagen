@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    .auge {
+      position: absolute;
+      width: 60px;
+      height: 80px;
+      border: 5px solid black;
+      border-radius: 50%;
+      top: 100px;
+      overflow: hidden;
+    }
+    .links {
+      left: 100px;
+    }
+    .rechts {
+      left: 200px;
+    }
+    .pupille {
+      position: absolute;
+      width: 30px;
+      height:30px;
+      background: black;
+      border-radius: 50%;
+    }
+    #pl {
+      top: 0px;
+      left:0px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Mauszeiger folgen</h1>
+  <div class="auge links">
+     <div id="pl" class="pupille"></div>
+  </div>
+  <div class="auge rechts">
+    <div id="pr" class="pupille"></div>
+  </div>
+  <div id="ausgabe"></div>
+  <script>
+    document.addEventListener('mousemove', function (evt) {
+      document.getElementById('ausgabe').innerHTML = 'x:' + evt.pageX + ' y:' + evt.pageY
+      move(evt.pageX, evt.pageY)
+    })
+  
+
+    function move (coordX, coordY) {
+      // linke Pupille positionieren
+      let neuPosX = coordX - 115
+      let neuPosY = coordY - 115
+      if (neuPosX < 0)  neuPosX = -5
+      if (neuPosX > 30)  neuPosX = 35
+      if (neuPosY < 0)  neuPosY = -5
+      if (neuPosY > 50)  neuPosY = 55
+
+      let pupl = document.getElementById('pl')
+      pupl.style.left = neuPosX + 'px'
+      pupl.style.top = neuPosY + 'px'
+
+      // rechte Pupille positionieren 
+      neuPosX = coordX - 215
+      if (neuPosX < 0)  neuPosX = -5
+      if (neuPosX > 30)  neuPosX = 35
+      
+      let pupr = document.getElementById('pr')
+      pupr.style.left = neuPosX + 'px'
+      pupr.style.top = neuPosY + 'px'
+
+     
+    }
+  </script>
+</body>
+
+</html>

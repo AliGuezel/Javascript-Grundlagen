@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    #ausgabe {
+      border: 1px solid midnightblue;
+      background: deepskyblue;
+      padding: 20px;
+    }
+
+    #ausgabe.wichtig {
+      border: 5px solid red;
+      font-size: 40px;
+    }
+
+    button {
+      margin-top: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Ändern von HTML</h1>
+  <p id="begruessung"></p>
+  <div id="ausgabe"></div>
+  <button onclick="machwichtig()">Die Ausgabe ist wichtig</button>
+  <button onclick="machunwichtig()">Die Ausgabe ist nicht wichtig</button>
+
+  <script>
+    // Ausgabe von Inhalten mit innerHTML 
+    document.getElementById('begruessung').innerHTML = 'Hallo Dominic'
+    
+    let ausgabe = document.getElementById('ausgabe')
+
+    // Schreiben in eine HTML Element
+    ausgabe.innerHTML = document.querySelector('h1').innerHTML
+
+    // Zugriff auf inline CSS eines HTML Elements
+    ausgabe.style.color = 'red'
+    ausgabe.style.backgroundColor = 'gold'
+    ausgabe.style.transform = 'rotate(-5deg)'
+
+    // Hinzufügen einer Klasse
+    function machwichtig () {
+      ausgabe.classList.add('wichtig')
+    }
+
+    // Entfernen einer
+    function machunwichtig () {
+      ausgabe.classList.remove('wichtig')
+    }
+
+
+
+
+
+  </script>
+</body>
+
+</html>

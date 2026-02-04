@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Schere Stein Papier</title>
+  <style>
+    body {
+      text-align: center;
+    }
+    #spiel {
+      display: flex;
+      justify-content: center;
+    }
+    #spiel > div {
+      width: 340px;
+    }
+    .hand {
+      margin: 0 auto;
+      width: 300px;
+      height: 220px;
+      background: antiquewhite;
+    }
+  
+    .hand1 {background: url(img/schere.jpg)} 
+    .hand2 {background: url(img/stein.jpg)} 
+    .hand3 {background: url(img/papier.jpg)} 
+
+    #handgegner {
+      transform: rotateY(180deg);
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>Schere, Stein, Papier</h1>
+  <p> Bitte wählen Sie:</p>
+  <p>
+    <img src="img/pic_schere.jpg" alt="Schere" onclick="spielen(1)">
+    <img src="img/pic_stein.jpg" alt="Stein" onclick="spielen(2)">
+    <img src="img/pic_papier.jpg" alt="Papier" onclick="spielen(3)">
+  </p>
+  <div id="spiel">
+    <div>
+      <p>Deine Wahl:</p>
+      <div id="handich" class="hand"></div>  
+    </div>
+    <div>
+      <p>Wahl des Gegners:</p>
+      <div id="handgegner" class="hand"></div>      
+    </div>
+  </div>
+  <div id="ausgabe"></div>
+  <script>
+    function spielen (zahl) {
+      let ich =  document.getElementById('handich')
+      ich.classList.remove('hand1')
+      ich.classList.remove('hand2')
+      ich.classList.remove('hand3')
+      ich.classList.add('hand' + zahl)
+
+      gegnerzahl = Math.floor(Math.random() * 3) + 1
+      let gegner = document.getElementById('handgegner')
+      gegner.classList.remove('hand1')
+      gegner.classList.remove('hand2')
+      gegner.classList.remove('hand3')
+      gegner.classList.add('hand' + gegnerzahl)
+
+      if (zahl === gegnerzahl)
+        document.getElementById('ausgabe').innerHTML = 'Unentschieden'
+      else if ((zahl == 1 && gegnerzahl == 3) || (zahl == 2 && gegnerzahl == 1) || (zahl == 3 && gegnerzahl == 2))
+        document.getElementById('ausgabe').innerHTML = 'Du hast gewonnen'
+      else
+        document.getElementById('ausgabe').innerHTML = 'Du hast verloren'
+    }
+  </script>
+</body>
+
+</html>
