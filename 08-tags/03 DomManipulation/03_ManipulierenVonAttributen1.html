@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+      color: goldenrod;
+    }
+    h1, p {
+      text-align: center;
+    }
+    #lampen {
+      width: 378px;
+      margin: 0 auto;
+    }
+    #lampen::selection {
+      background: black;
+    }
+    .lampe {
+      display: inline-block;
+      width: 72px;
+      height: 72px;
+      background-image: url('img/off.jpg');
+    }
+
+    .lampe.an {
+      background-image: url('img/on.jpg');
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Mach alle Lichter an</h1>
+  <div id="lampen">
+    <span onclick="schalter(1)" class="lampe" id="lampe1"></span>
+    <span onclick="schalter(2)" class="lampe" id="lampe2"></span>
+    <span onclick="schalter(3)" class="lampe" id="lampe3"></span>
+    <span onclick="schalter(4)" class="lampe" id="lampe4"></span>
+    <span onclick="schalter(5)" class="lampe" id="lampe5"></span>
+
+    <span onclick="schalter(6)" class="lampe" id="lampe6"></span>
+    <span onclick="schalter(7)" class="lampe" id="lampe7"></span>
+    <span onclick="schalter(8)" class="lampe" id="lampe8"></span>
+    <span onclick="schalter(9)" class="lampe" id="lampe9"></span>
+    <span onclick="schalter(10)" class="lampe" id="lampe10"></span>
+
+    <span onclick="schalter(11)" class="lampe" id="lampe11"></span>
+    <span onclick="schalter(12)" class="lampe" id="lampe12"></span>
+    <span onclick="schalter(13)" class="lampe" id="lampe13"></span>
+    <span onclick="schalter(14)" class="lampe" id="lampe14"></span>
+    <span onclick="schalter(15)" class="lampe" id="lampe15"></span>
+
+    <span onclick="schalter(16)" class="lampe" id="lampe16"></span>
+    <span onclick="schalter(17)" class="lampe" id="lampe17"></span>
+    <span onclick="schalter(18)" class="lampe" id="lampe18"></span>
+    <span onclick="schalter(19)" class="lampe" id="lampe19"></span>
+    <span onclick="schalter(20)" class="lampe" id="lampe20"></span>
+
+    <span onclick="schalter(21)" class="lampe" id="lampe21"></span>
+    <span onclick="schalter(22)" class="lampe" id="lampe22"></span>
+    <span onclick="schalter(23)" class="lampe" id="lampe23"></span>
+    <span onclick="schalter(24)" class="lampe" id="lampe24"></span>
+    <span onclick="schalter(25)" class="lampe" id="lampe25"></span>
+  </div>
+  <p id="ausgabe"></p>
+
+  <script>
+    function schalter(nr) {
+      document.getElementById('lampe' + nr).classList.toggle('an')
+      if (nr % 5 != 0) document.getElementById('lampe' + (nr + 1)).classList.toggle('an')
+      if (nr % 5 != 1) document.getElementById('lampe' + (nr - 1)).classList.toggle('an')
+      if (nr > 5) document.getElementById('lampe' + (nr - 5)).classList.toggle('an')
+      if (nr < 21) document.getElementById('lampe' + (nr + 5)).classList.toggle('an')
+
+      let lampenAn = document.getElementsByClassName('an').length
+
+      if (lampenAn === 25) {
+        document.getElementById('ausgabe').innerHTML = 'Du hast gewonnen !!!'
+      } else {
+        document.getElementById('ausgabe').innerHTML = 'Es sind ' + lampenAn + ' Lampen angeschaltet.'
+      }
+    }
+
+  </script>
+</body>
+
+</html>

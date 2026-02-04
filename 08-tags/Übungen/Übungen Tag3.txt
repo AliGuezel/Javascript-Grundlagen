@@ -1,0 +1,15 @@
+
+6)
+Erstellen Sie eine Internetseite, die abhängig von der Tageszeit ein anderes Design hat (Hintergund, Textfarbe, Schriftart).
+
+7)
+Erstellen Sie einen Lottozahlengenerator. Es sollen 6 Zahlen aus 49 ausgegeben werden.
+Stellen Sie sicher, dass keine Lottozahl doppelt vorkommt
+
+8)
+Auf der Internetseite aus Aufgabe 6 soll das aktuelle Datum und die Uhrzeit angezeigt werden.
+
+9)
+Der Beutzer soll einen Text eingeben, dieser soll auf der Internetseite Rückwärts geschrieben ausgegeben werden.
+Beispiel: Eingabe: Hallo Welt!
+          Ausgabe: !tleW ollaH

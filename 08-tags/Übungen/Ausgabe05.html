@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body>
+  <!-- 
+    Über eine Schleife soll folgende Zahlenfolge ausgegeben werden:  6,12,18,24,36,48,54
+  -->
+  <h1>Aufgabe 05</h1>
+  <script>
+    for (let zahl = 6; zahl <= 54; zahl += 6) {
+      if (zahl == 30) continue
+      if (zahl == 42) continue
+      document.write(zahl)
+      if (zahl != 54) document.write(',')
+    }
+    document.write('<hr>')
+
+    for (let zahl = 6; zahl <= 54; zahl += 6) {
+      if (zahl == 30 || zahl == 42) continue
+      document.write(zahl)
+      if (zahl != 54) document.write(',')
+    }
+  </script>
+</body>
+</html>
+

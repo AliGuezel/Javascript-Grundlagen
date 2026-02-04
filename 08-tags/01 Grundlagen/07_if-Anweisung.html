@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body style="font-family:sans-serif">
+  <h1>Bedingter Code</h1>
+  <h2>Vergleiche</h2>
+  <script>
+    let a = 2
+    let b = 3
+    let c = '3'
+
+    document.write('<p>Wert von a:' + a + '</p>')
+    document.write('<p>Wert von b:' + b + '</p>')
+    document.write('<p>Wert von c:"' + c + '"</p>')
+
+    // > - größer als - true wenn der linke Wert größer ist als der rechte Wert
+    document.write('<p>Vergleich: a größer b? ' + (a > b) + '</p>')
+
+    // < - kleiner als - true wenn der linke Wert kleiner ist als der rechte Wert
+    document.write('<p>Vergleich: a kleiner b? ' + (a < b) + '</p>')
+
+    // >= - größer oder gleich - true wenn der linke Wert größer ist als der rechte Wert oder gleich ist
+    document.write('<p>Vergleich: a größer oder gleich b? ' + (a >= b) + '</p>')
+
+    // <= - kleiner oder gleich - true wenn der linke Wert kleiner ist als der rechte Wert oder gleich ist
+    document.write('<p>Vergleich: a kleiner oder gleich b? ' + (a <= b) + '</p>')
+
+    // == - ist gleich - true wenn beide Werte gleich sind
+    document.write('<p>Vergleich: a gleich b? ' + (a == b) + '</p>')
+    // hier wird ggf. das Datentyp beim Vergleich ignoriert, also 3 gleich '3'
+    document.write('<p>Vergleich: b gleich c? ' + (b == c) + '</p>')
+
+    // === - ist identisch, true wenn Wert und Datentyp übereinstimmen
+    document.write('<p>Vergleich: b identisch c? ' + (b === c) + '</p>')
+
+    // != - nicht gleich
+    document.write('<p>Vergleich: b nicht gleich c? ' + (b != c) + '</p>')
+
+    // !== - nicht identisch
+    document.write('<p>Vergleich: b nicht identisch c? ' + (b !== c) + '</p>')
+  </script>
+  <h2>Die if-Anweisung</h2>
+  <script>
+
+    let eingabe = window.parseInt(window.prompt('Bitte geben Sie eine Zahl ein'))
+    // window.parseInt() liefert eine ganze Zahl, alles hinter Ziffern wird abgeschnitten
+
+    document.write('<p>Sie haben eine ' + eingabe + ' eingegeben</p>')
+
+    //Die globale Funktion isNaN() ermittelt, ob ein zu übergebender Wert eine ungültige Zahl ist (NaN = Not a Number).
+    if (window.isNaN(eingabe)) {
+      // dieser Block wird ausgeführt wenn die Eingabe keine Zahl ist
+      document.write('<p>Es wurde keine gültige Zahl eingegeben')
+    } else {
+      // dieser Block wird ausgeführt wenn die Eingabe eine Zahl ist
+      if (eingabe < 50) {
+        document.write('<p>Die eingegebene Zahl ist kleiner als 50')
+      } else if (eingabe == 50) {
+        document.write('<p>Die eingegebene Zahl ist gleich 50')
+      } else {
+        document.write('<p>Die eingegebene Zahl ist größer als 50')
+      }
+    }
+
+    /*
+		  Mit if leiten Sie eine Wenn-Dann-Bedingung ein (if = wenn). Dahinter folgt, in Klammern stehend, 
+      die Formulierung der Bedingung. Um solche Bedingungen zu formulieren, brauchen Sie Vergleichsoperatoren 
+      und in den meisten Fällen auch Variablen. Für Fälle, in denen die Bedingung nicht erfüllt ist, 
+      können Sie einen "andernfalls"-Zweig definieren. Dies geschieht durch else (else = sonst).
+      Der Else-Zweig ist nicht zwingend erforderlich. 
+	 */
+
+
+    /*
+        Das Ausführen von Anweisungen kann von Bedingungen abhängig gemacht werden.
+        In einer Verzweigung (bedingte Anweisung) wird der Anweisungsblock nur durchlaufen wenn die Bedingung erfüllt ist.
+        Alternativ kann beim Nichterfüllen der Bedingung (else) ein zweiter Anweisungsblock durchlaufen werden 
+
+           if ( eingabe < 50 ) {
+            document.write('<p>Die eingegebene Zahl ist kleiner als 50')
+          } else {
+            document.write('<p>Die eingegebene Zahl ist größer oder gleich 50')
+          }
+    
+          
+          if ( eingabe < 50 ) 
+            document.write('<p>Die eingegebene Zahl ist kleiner als 50')
+          else
+            document.write('<p>Die eingegebene Zahl ist größer oder gleich 50')
+    
+    */
+
+    document.write('<hr><h2>Der ternäre-Operator</h2>')
+    let zahl = 5
+    /*
+    if (zahl % 2 === 0) {
+      document.write ('Die Zahl ist gerade')
+    } else {
+      document.write ('Die Zahl ist ungerade')
+    }
+    */
+    let ausgabe = (zahl % 2 === 0) ? 'Die Zahl ist gerade' : 'Die Zahl ist ungerade';
+
+  </script>
+</body>
+
+</html>
+
+<!--
+  de https://wiki.selfhtml.org/wiki/JavaScript/Verzweigung
+  de https://wiki.selfhtml.org/wiki/JavaScript/Operatoren/tern%C3%A4rer_Operator
+  en https://www.w3schools.com/js/js_if_else.asp
+-->

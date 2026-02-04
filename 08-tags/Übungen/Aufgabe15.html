@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body>
+  <h1>Aufgabe 15</h1>
+  <h2>Alter in Sekunden</h2>
+  <p><label>Bitte geben Sie Ihr Geburtsdatum ein:<br><input id="eingabe" type="datetime-local"></label></p>
+  <button onclick="berechnen()">Alter in Sekunden berechnen</button>
+  <p id="ausgabe"></p>
+  <script>
+
+    function berechnen() {
+      let geburtstag = Date.parse(document.getElementById('eingabe').value)
+      if (Number.isNaN(geburtstag)) {
+        document.getElementById('ausgabe').innerHTML = 'Bitte geben Sie ein vollständiges, gültiges Datum ein.'
+      } else {
+        let jetzt = new Date()
+        let ausgabe = 'Alter in Sekunden: ' + Math.floor((jetzt - geburtstag)/1000) + '<br>'
+        ausgabe += 'Alter in Minuten: ' + Math.floor((jetzt - geburtstag)/1000/60) + '<br>'
+        ausgabe += 'Alter in Stunden: ' + Math.floor((jetzt - geburtstag)/1000/60/60) + '<br>'
+        ausgabe += 'Alter in Tagen: ' + Math.floor((jetzt - geburtstag)/1000/60/60/24) + '<br>'
+        document.getElementById('ausgabe').innerHTML = ausgabe
+      }
+    }
+    /*
+    let jahr = window.prompt('Gib Dein Geburtsjahr an:')
+    let monat = window.prompt('Gib Deinen Geburtsmonat an:')
+    let tag = window.prompt('Gib Dein Geburtstag an:')
+    let stunde = window.prompt('Gib Dein Geburtsstunde an:')
+    let minute = window.prompt('Gib Dein Geburtsminute an:')
+    let geburtstag = new Date(jahr, monat - 1, tag, stunde, minute)
+    let jetzt = new Date()
+    
+    document.write('Alter in Sekunden: ' + Math.floor((jetzt - geburtstag)/1000) + '<br>')
+    document.write('Alter in Minuten: ' + Math.floor((jetzt - geburtstag)/1000/60) + '<br>')
+    document.write('Alter in Stunden: ' + Math.floor((jetzt - geburtstag)/1000/60/60) + '<br>')
+    document.write('Alter in Tagen: ' + Math.floor((jetzt - geburtstag)/1000/60/60/24) + '<br>')
+    */
+  </script>
+</body>
+</html>

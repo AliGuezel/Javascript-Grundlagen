@@ -1,0 +1,28 @@
+1.) 
+Über eine Schleife soll folgende Zahlenfolge ausgegeben werden: 4,8,12,16,20,24,28,32
+
+2.)
+Schreiben Sie einen kleinen Kreditrechner.
+Die Benutzer soll aufgeforder werden Kredithöhe und Zinssatz einzugeben.
+Der Kreditrechner soll den gesammten Rückzahlungsbetrag ausgeben.
+
+Rückzahlungsbetrag = Kreditbetrag*(1+Zinssatz/100)
+
+
+3.)
+Erstellen Sie ein kleines Gedächtnis-Spiel.
+Beim Aufrufen der Seite wird der Spieler durch ein Dialogfenster über die Regeln informiert:
+
+"Merken Sie sich die Ziffernfolgen die gleich erscheinen, und geben Sie sie anschließend ein. 
+Es erscheinen zunächst einmal drei Ziffern, dann vier Ziffern usw.
+Sobald Sie eine Ziffernfolge falsch eingegeben haben, ist das Ende des Spiels erreicht."
+Programmieren Sie das Gedächtnisspiel. Am Ende soll dem Spieler mitgeteilt werden wie gut er war.
+
+4.)
+Die Benutzer soll aufgeforder werden Kredithöhe, Laufzeit in Monaten und Zinssatz einzugeben. 
+Der Kreditrechner soll den gesammten Rückzahlungsbetrag und die einzelnen Raten ausgeben.
+
+Rückzahlungsbetrag = Kreditbetrag * Math.pow((1+Zinssatz/100),(Laufzeit/12))
+
+5.)
+Über eine Schleife soll folgende Zahlenfolge ausgegeben werden:  6,12,18,24,36,48,54

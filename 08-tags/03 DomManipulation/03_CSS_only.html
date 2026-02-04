@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+    }
+    .lampe {
+      display: inline-block;
+      width: 72px;
+      height: 72px;
+      background-image: url('../Übungen/img/off.jpg');
+    }
+    input {
+      display: none;
+    }
+    #cb1:checked ~ label #lampe1,
+    #cb2:checked ~ label #lampe2,
+    #cb3:checked ~ label #lampe3,
+    #cb4:checked ~ label #lampe4,
+    #cb5:checked ~ label #lampe5 {
+      background-image: url('../Übungen/img/on.jpg');
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Mach das Licht an</h1>
+  <input id="cb1" type="checkbox">  
+  <input id="cb2" type="checkbox">  
+  <input id="cb3" type="checkbox">  
+  <input id="cb4" type="checkbox">  
+  <input id="cb5" type="checkbox">
+ <label for="cb1"><span class="lampe" id="lampe1"></span></label>
+ <label for="cb2"><span class="lampe" id="lampe2"></span></label>
+ <label for="cb3"><span class="lampe" id="lampe3"></span></label>
+ <label for="cb4"><span class="lampe" id="lampe4"></span></label>
+ <label for="cb5"><span class="lampe" id="lampe5"></span></label>
+  
+</body>
+
+</html>
