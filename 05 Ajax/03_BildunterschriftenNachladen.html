@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    figure {
+      display: inline-block;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Überschrift</h1>
+  <figure>
+    <img id="bi1" src="img/katze.jpg" alt="">
+    <figcaption id="bu1">-</figcaption>
+  </figure>
+  <figure>
+    <img id="bi2" src="img/hund.jpg" alt="">
+    <figcaption id="bu2">-</figcaption>
+  </figure>
+  <figure>
+    <img id="bi3" src="img/meerschweinchen.jpg" alt="">
+    <figcaption id="bu3">-</figcaption>
+  </figure>
+  <figure>
+    <img id="bi4" src="img/vogel.jpg" alt="">
+    <figcaption id="bu4">-</figcaption>
+  </figure>
+  <script>
+
+    document.addEventListener('mouseover', function (event) {
+      if (event.target.nodeName === 'IMG') {
+        datenLaden(event.target.id[2])
+      }
+    })
+    document.addEventListener('mouseout', function (event) {
+      if (event.target.nodeName === 'IMG') {
+        leeren ()
+      }
+    })
+
+
+    /*
+    document.querySelectorAll('img').forEach( function (element) {
+        element.addEventListener('mouseover', function() {datenLaden(element.id[2])})
+        element.addEventListener('mouseout', leeren)
+    })
+    */
+
+    function datenLaden (nr) {
+      let anfrage = new XMLHttpRequest ()
+      anfrage.open ('GET', '03_daten.php?bildnummer=' + nr, true)
+      anfrage.addEventListener('readystatechange', function () {
+        if (anfrage.readyState === 4) {
+          document.getElementById('bu' + nr).innerHTML = anfrage.responseText
+        }
+      })
+      anfrage.send()
+    }
+
+    function leeren () {
+      document.getElementById('bu1').innerHTML = "-"
+      document.getElementById('bu2').innerHTML = "-"
+      document.getElementById('bu3').innerHTML = "-"
+      document.getElementById('bu4').innerHTML = "-"
+    }
+
+  </script>
+</body>
+
+</html>

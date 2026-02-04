@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    #puzzle {
+      width: 600px;
+      height: 600px;
+      border: 20px solid black;
+      border-radius: 10px;
+      font-size: 0;
+    }
+    .pt {
+      display: inline-block;
+      width: 198px;
+      height: 198px;
+      border: 1px solid black;
+      background-image: url(img/giraffe.jpg);
+      background-color: gray;
+    }
+    
+    [pt="1"] {background-position: 0 0}
+    [pt="2"] {background-position: -200px 0}
+    [pt="3"] {background-position: -400px 0}
+    [pt="4"] {background-position: 0px -200px}
+    [pt="5"] {background-position: -200px -200px}
+    [pt="6"] {background-position: -400px -200px}
+    [pt="7"] {background-position: 0px -400px}
+    [pt="8"] {background-position: -200px -400px}
+    [pt="9"] { background-image:none}
+    
+    .aktiv {
+      cursor: pointer;
+    }
+  </style> 
+</head>
+
+<body>
+  <h1>Schiebepuzzle</h1>
+  <section id="puzzle">
+    <div id="t1" pt="1" class="pt"></div>
+    <div id="t2" pt="2" class="pt"></div>
+    <div id="t3" pt="3" class="pt"></div>
+    <div id="t4" pt="4" class="pt"></div>
+    <div id="t5" pt="5" class="pt"></div>
+    <div id="t6" pt="6" class="pt"></div>
+    <div id="t7" pt="7" class="pt"></div>
+    <div id="t8" pt="8" class="pt"></div>
+    <div id="t9" pt="9" class="pt"></div>
+  </section>
+  <button id="mischen">mischen</button>
+  <script>
+    let feldFrei = 9
+    machFelderAktiv(feldFrei)
+  
+    document.getElementById('puzzle').addEventListener('click', function (event) {
+      if (event.target.classList.contains('aktiv')) {
+        let leeresElement = document.getElementById('t' + feldFrei)
+        let alterPtWert = leeresElement.getAttribute('pt')
+        leeresElement.setAttribute('pt', event.target.getAttribute('pt'))
+        event.target.setAttribute('pt',alterPtWert)
+        feldFrei = event.target.id[1]
+        machFelderAktiv(Number(feldFrei))
+        let gewonnen = true
+        for (let i = 1; i < 9; i++) {
+          if (document.getElementById('t' + i).getAttribute('pt') != i) gewonnen = false
+        }
+          
+        if (gewonnen)document.querySelector('h1').innerHTML = ('Du hast gewonnen!')
+      }
+    })
+    document.getElementById('mischen').addEventListener('click', function () {
+      let zufallszahlen = [1,2,3,4,5,6,7,8,9]
+      for (let i = 1; i<100; i++)
+        zufallszahlen.push(zufallszahlen.splice(Math.floor(Math.random()*zufallszahlen.length), 1)[0])
+      for (let i = 0; i < zufallszahlen.length; i++) {
+        document.getElementById('t' + (i + 1)).setAttribute('pt', zufallszahlen[i])
+      }
+    })
+
+    function machFelderAktiv (nr) {
+      document.querySelectorAll('#puzzle div').forEach(function (element) {element.classList.remove('aktiv')})
+      if (nr % 3 !== 1) document.getElementById('t' + (nr - 1)).classList.add('aktiv')
+      if (nr % 3 !== 0) document.getElementById('t' + (nr + 1)).classList.add('aktiv')
+      if (nr > 3) document.getElementById('t' + (nr - 3)).classList.add('aktiv')
+      if (nr < 7) document.getElementById('t' + (nr + 3)).classList.add('aktiv')
+    }
+  </script>
+</body>
+
+</html>

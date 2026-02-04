@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    label {
+      width: 100px;
+      display: inline-block;
+      text-align: right;
+      margin-right: 10px;
+    }
+    input {
+      width: 250px;
+    }
+    #plz {
+      width: 40px;
+    }
+    #ort {
+      width: 200px;
+    }
+    [for=ort] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Kontakformular</h1>
+  <form>
+    <p><label for="name">Name:</label><input id="name" name="Name">
+    <p><label for="addrese">Adresse:</label><input id="addrese" name="Addrese">
+    <p><label for="plz">PLZ:</label><input id="plz" name="PLZ" maxlength="5">
+    <label for="ort">Ort:</label><input id="ort" name="Ort">
+  </form>
+  <script>
+    document.getElementById('plz').addEventListener('input', function () {
+      if (this.value.length === 5) {
+        let request = new XMLHttpRequest()
+        let daten = 'plz=' + this.value
+        request.open('POST', 'plz.php' , true)
+        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+        request.addEventListener('readystatechange', function () {
+          if (this.readyState === 4) {
+            document.getElementById('ort').value = this.responseText
+          }
+        })
+        request.send(daten)
+      } else {
+        document.getElementById('ort').value = ''
+      }
+    })
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    table, td, th {
+      border: 1px solid gray;
+      padding: 5px 10px;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      let xhr = new XMLHttpRequest()
+      let buch = new Array()
+      let ausgabe = document.getElementById('ausgabe')
+      let bookinfo = document.getElementById('bookinfo')
+      document.getElementById('laden').addEventListener("click", function () {
+        xhr.open('get', 'books.xml', true)
+        xhr.addEventListener('readystatechange', function () {
+          if (xhr.readyState === 4) {
+            let data = xhr.responseXML
+            buch = data.getElementsByTagName('book')
+            ausgabe.innerHTML = buch.length
+            let output =  '<table><tr><th>title<th>Author<th>Genre<th>price'
+            for (let i = 0; i < buch.length; i++) {
+              let title = ''
+              let author = ''
+              let genre = ''
+              let price = ''
+              output += '<tr><td>' + title + '<td>' + author + '<td>' + genre + '<td>' + price  
+            }
+            output += '</table>'
+            bookinfo.innerHTML = output
+            
+            /*
+              XML-DOM Eigenschaften und Methoden
+              In XML arbeiten wir mit Nodes
+              
+              die 3 wichtigsten Eigenschaften eines Nodes sind
+                - nodeName
+                - nodeValue
+                - nodeType
+
+              Der nodeName  gibt den Namen des Knoten zurück
+                - nodeName ist eine schreibgeschützte Eigenschaft
+                - nodeName eines Elements ist identisch mit dem TAG-Namen
+                - nodeName eines Attributs ist identisch mit dem Attributs-Namen
+                - nodeName eines Textknotens ist immer #text
+
+              Der nodeValue gibt den Wert an, der in einem Knoten gespeichert ist
+                - nodeValue eines Elements ist immer undefined
+                - nodeValue  eines Attributs ist der Wert der dem Attribut zugewiesen ist
+                - nodeValue eines Textknotens ist der eigentliche Text
+
+              nodeType
+                1 Element Knoten
+                2 Attributs-Knoten
+                3 Text-Knoten
+                4 CDATA-Knoten
+                5 Entitäten-Referenz Knoten
+                6 Entitäten Knoten
+                7 Processing-Instruction-Knoten
+                8 Kommentar Knoten
+                9 Dokument Knoten
+
+              weitere Eigenschaften zum traversieren (Bewegen durch das DOM)
+                node.attributes   Auswahl aller Attributsknoten zu einem Element-Knoten
+                node.parentNode   Auswahl des ElternElements
+                node.childNodes   Auswahl aller Kind-Knoten innerhalb des Elements (inkl. Textknoten zwischen den Kindelementen)
+                node.firstChild
+                node.lastChild
+                node.nextSibling  Auswahl des nächsten Geschwister-Knotens
+                node.previous.Sibling
+
+              XML DOM MEthoden
+                .getElementsByTagName()
+                .appendChild(node)  ein Kindelement wird hinten angefügt
+                .removeChild(node)  ein Kindelemnt wird entfernt
+                .hasAttribute()     prüfen ob Attribut vorhanden
+                .hasChildNode()     prüfen ob Kindknoten vorhanden
+            */
+          }
+        })
+        xhr.send(null)
+      })
+    })
+  </script>
+</head>
+
+<body>
+  <h1>XML-Daten laden</h1>
+  <button id="laden">Bücher ausgeben</button>
+  <div id="bookinfo"></div>
+  <div id="ausgabe"></div>
+</body>
+
+</html>

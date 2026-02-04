@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<SAMMLUNG>
+  <CD id="1">
+    <TITLE>Empire Burlesque</TITLE>
+    <ARTIST>Bob Dylan</ARTIST>
+  </CD>
+  <CD id="2">
+    <TITLE>Hide your heart</TITLE>
+    <ARTIST>Bonny Tyler</ARTIST>
+  </CD>
+</SAMMLUNG>
