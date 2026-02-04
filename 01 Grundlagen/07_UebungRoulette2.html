@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    body {
+      color: #FFFFFF;
+      background: darkgreen;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    #roulette {
+      display: flex;
+    }
+
+    #spieler {
+      width: calc(100% - 900px);
+      text-align: center;
+    }
+
+    #guthaben {
+      background: black;
+      color: green;
+      width: 300px;
+      font: 36px Courier, monospace;
+      margin: 10px auto;
+    }
+
+    #guthaben::before {
+      content: 'Guthaben';
+      display: block;
+      font-size: 16px;
+    }
+
+    #guthaben::after {
+      content: ' €';
+    }
+
+    table {
+      width: 200px;
+      height: 200px;
+      margin: auto;
+    }
+
+    td {
+      position: relative;
+    }
+
+    .jetons {
+      top: 0;
+      left: 10px;
+      width: 50px;
+      height: 50px;
+      font: 700 18px/30px Arial, sans-serif;
+      text-align: center;
+      color: black;
+      background: antiquewhite;
+      border-radius: 50%;
+      margin: 0 auto;
+      box-sizing: border-box;
+      position: absolute;
+    }
+
+    #z0 .jetons {
+      left: 90px;
+    }
+
+    #passe .jetons,
+    #manque .jetons,
+    #pair .jetons,
+    #impair .jetons,
+    #noir .jetons,
+    #rouge .jetons {
+      left: 50px;
+      top: 100px;
+    }
+
+    #j5 {
+      border: 10px dashed red
+    }
+
+    #j10 {
+      border: 10px dashed blue
+    }
+
+    #j20 {
+      border: 10px dashed goldenrod
+    }
+
+    #j25 {
+      border: 10px dashed green
+    }
+
+    #j100 {
+      border: 10px dashed black
+    }
+
+    #j500 {
+      border: 10px dashed purple
+    }
+
+    .draggable {
+      cursor: move;
+    }
+
+    #kessel {
+      width: 80px;
+      height: 80px;
+      border: 4px solid black;
+      border-radius: 3px;
+      margin: 20px auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #kessel img {
+      position: absolute;
+      left: -360px;
+      transition: transform 22s;
+      transform: rotate(0deg);
+    }
+
+    #tisch {
+      width: 600px;
+      height: 783px;
+      background: url(img/roulette.svg) 0 0/cover;
+      position: relative;
+    }
+
+    #tisch > div {
+      position: absolute;
+      font-size: 0;
+      width: 74px;
+      height: 50px;
+      background-color: rgba(150, 0, 0, 0.0);
+      transition: all 200ms;
+      overflow: visible;
+    }
+
+    .jetons:nth-child(1) {
+      margin-left: 0px
+    }
+
+    .jetons:nth-child(2) {
+      margin-left: 4px
+    }
+
+    .jetons:nth-child(3) {
+      margin-left: 8px
+    }
+
+    .jetons:nth-child(4) {
+      margin-left: 12px
+    }
+
+    .jetons:nth-child(5) {
+      margin-left: 16px
+    }
+
+    .jetons:nth-child(6) {
+      margin-left: 20px
+    }
+
+    .jetons:nth-child(7) {
+      margin-left: 24px
+    }
+
+    .jetons:nth-child(8) {
+      margin-left: 28px
+    }
+
+    .jetons:nth-child(9) {
+      margin-left: 32px
+    }
+
+    .jetons:nth-child(10) {
+      margin-left: 36px
+    }
+
+    button {
+      font-size: 24px;
+    }
+
+    #tisch div:hover {
+      background-color: rgba(150, 0, 0, 0.3);
+    }
+
+    #info {
+      width: 300px;
+    }
+
+    #ausgabe {
+      margin: 50px;
+      font-size: 40px;
+    }
+
+    #historie {
+      border: 2px inset gray;
+      width: 70px;
+      height: 480px;
+      position: absolute;
+      top: 370px;
+      right: 140px;
+      overflow: hidden;
+      background: white;
+      ;
+    }
+
+    #historie span {
+      font-size: 24px;
+      display: block;
+      text-align: center;
+      border-bottom: 1px solid gray;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Roulettspiel</h1>
+  <div id="roulette">
+    <div id="spieler">
+      <div id="jetons">
+        <h2>Jetons&nbsp;&nbsp;</h2>
+        <div id="guthaben">5000</div>
+        <table>
+          <tr>
+            <td>
+              <div class="draggable jetons" draggable="true" id="j5">5</div>
+            <td>
+              <div class="draggable jetons" draggable="true" id="j10">10</div><br>
+          <tr>
+            <td>
+              <div class="draggable jetons" draggable="true" id="j20">20</div>
+            <td>
+              <div class="draggable jetons" draggable="true" id="j25">25</div><br>
+          <tr>
+            <td>
+              <div class="draggable jetons" draggable="true" id="j100">100</div>
+            <td>
+              <div class="draggable jetons" draggable="true" id="j500">500</div><br>
+        </table>
+      </div>
+      <button onclick="spielen()">Roulette spielen</button>
+      <div id="kessel">
+        <img src="img/rad.png" alt="">
+      </div>
+    </div>
+    <div id="tisch">
+      <div class="droparea" style="left: 190px; top:39px; width: 224px;" id="z0">0</div>
+      <div class="droparea" style="left: 190px; top:90px;" id="z1">1</div>
+      <div class="droparea" style="left: 265px; top:90px;" id="z2">2</div>
+      <div class="droparea" style="left: 340px; top:90px;" id="z3">3</div>
+      <div class="droparea" style="left: 190px; top:140px;" id="z4">4</div>
+      <div class="droparea" style="left: 265px; top:140px;" id="z5">5</div>
+      <div class="droparea" style="left: 340px; top:140px;" id="z6">6</div>
+      <div class="droparea" style="left: 190px; top:190px;" id="z7">7</div>
+      <div class="droparea" style="left: 265px; top:190px;" id="z8">8</div>
+      <div class="droparea" style="left: 340px; top:190px;" id="z9">9</div>
+      <div class="droparea" style="left: 190px; top:240px;" id="z10">10</div>
+      <div class="droparea" style="left: 265px; top:240px;" id="z11">11</div>
+      <div class="droparea" style="left: 340px; top:240px;" id="z12">12</div>
+      <div class="droparea" style="left: 190px; top:290px;" id="z13">13</div>
+      <div class="droparea" style="left: 265px; top:290px;" id="z14">14</div>
+      <div class="droparea" style="left: 340px; top:290px;" id="z15">15</div>
+      <div class="droparea" style="left: 190px; top:340px;" id="z16">16</div>
+      <div class="droparea" style="left: 265px; top:340px;" id="z17">17</div>
+      <div class="droparea" style="left: 340px; top:340px;" id="z18">18</div>
+      <div class="droparea" style="left: 190px; top:390px;" id="z19">19</div>
+      <div class="droparea" style="left: 265px; top:390px;" id="z20">20</div>
+      <div class="droparea" style="left: 340px; top:390px;" id="z21">21</div>
+      <div class="droparea" style="left: 190px; top:440px;" id="z22">22</div>
+      <div class="droparea" style="left: 265px; top:440px;" id="z23">23</div>
+      <div class="droparea" style="left: 340px; top:440px;" id="z24">24</div>
+      <div class="droparea" style="left: 190px; top:490px;" id="z25">25</div>
+      <div class="droparea" style="left: 265px; top:490px;" id="z26">26</div>
+      <div class="droparea" style="left: 340px; top:490px;" id="z27">27</div>
+      <div class="droparea" style="left: 190px; top:540px;" id="z28">28</div>
+      <div class="droparea" style="left: 265px; top:540px;" id="z29">29</div>
+      <div class="droparea" style="left: 340px; top:540px;" id="z30">30</div>
+      <div class="droparea" style="left: 190px; top:590px;" id="z31">31</div>
+      <div class="droparea" style="left: 265px; top:590px;" id="z32">32</div>
+      <div class="droparea" style="left: 340px; top:590px;" id="z33">33</div>
+      <div class="droparea" style="left: 190px; top:640px;" id="z34">34</div>
+      <div class="droparea" style="left: 265px; top:640px;" id="z35">35</div>
+      <div class="droparea" style="left: 340px; top:640px;" id="z36">36</div>
+      <div class="droparea" style="left: 40px; top:90px; width:150px; height: 200px;clip-path: polygon(0% 15%, 100% 0, 100% 100%, 0% 100%);" id="passe">pas</div>
+      <div class="droparea" style="left: 415px; top:90px; width:150px; height: 200px;clip-path: polygon(0% 0%, 100% 15%, 100% 100%, 0% 100%);" id="manque">man</div>
+      <div class="droparea" style="left: 40px; top:290px; width:150px; height: 200px;" id="pair">pai</div>
+      <div class="droparea" style="left: 415px; top:290px; width:150px; height: 200px;" id="impair">imp</div>
+      <div class="droparea" style="left: 40px; top:490px; width:150px; height: 200px;clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0% 85%);" id="noir">noi</div>
+      <div class="droparea" style="left: 415px; top:490px; width:150px; height: 200px;clip-path: polygon(0% 0%, 100% 0, 100% 85%, 0% 100%);" id="rouge">rou</div>
+      <div class="droparea" style="left: 40px; top:660px; width:50px; height:60px;clip-path: polygon(0% 0%, 100% 18%, 100% 100%, 0% 82%);" id="p12l">p12</div>
+      <div class="droparea" style="left: 90px; top:670px; width:50px; height:60px;clip-path: polygon(0% 0%, 100% 18%, 100% 100%, 0% 82%);" id="m12l">m12</div>
+      <div class="droparea" style="left: 140px; top:680px; width:50px; height:60px;clip-path: polygon(0% 0%, 100% 18%, 100% 100%, 0% 82%);" id="d12l">d12</div>
+      <div class="droparea" style="left: 515px; top:660px; width:50px; height:60px;clip-path: polygon(0% 18%, 100% 0%, 100% 82%, 0% 100%);" id="p12r">p12</div>
+      <div class="droparea" style="left: 465px; top:670px; width:50px; height:60px;clip-path: polygon(0% 18%, 100% 0%, 100% 82%, 0% 100%);" id="m12r">m12</div>
+      <div class="droparea" style="left: 415px; top:680px; width:50px; height:60px;clip-path: polygon(0% 18%, 100% 0%, 100% 82%, 0% 100%);" id="d12r">d12</div>
+      <div class="droparea" style="left: 190px; top:690px;" id="r1">r1</div>
+      <div class="droparea" style="left: 265px; top:690px;" id="r2">r2</div>
+      <div class="droparea" style="left: 340px; top:690px;" id="r3">r3</div>
+    </div>
+    <div id="info">
+      <div id="ausgabe"></div>
+      <div id="historie"></div>
+    </div>
+  </div>
+
+  <script>
+    var guthaben = 5000
+    var kessel = 0
+    const kesselzahlen = [0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 6, 27, 13, 36, 11, 30, 8, 23, 10, 5, 24, 16, 33, 1, 20, 14, 31, 9, 22, 18, 29, 7, 28, 12, 35, 3, 26]
+    let audio = new Audio()
+    audio.setAttribute('src', 'sound/roulette.mp3')
+    const farben = ['green', 'red', 'black', 'red', 'black', 'red', 'black', 'red', 'black', 'red', 'black', 'black', 'red', 'black', 'red', 'black', 'red', 'black', 'red', 'red', 'black', 'red', 'black', 'red', 'black', 'red', 'black', 'red', 'black', 'black', 'red', 'black', 'red', 'black', 'red', 'black', 'red']
+
+    document.addEventListener('dragstart', function (event) {
+      if (event.target.classList.contains('draggable')) {
+        event.target.classList.add('dragging')
+      }
+    })
+
+    document.addEventListener('dragend', function (event) {
+      if (event.target.classList.contains('draggable')) {
+        event.target.classList.remove('dragging')
+      }
+    })
+
+    document.addEventListener('dragover', function (event) {
+      if (event.target.classList.contains('droparea') || event.target.parentElement.classList.contains('droparea')) {
+        event.preventDefault()
+      }
+    })
+
+    document.addEventListener('drop', function (event) {
+      if (event.target.classList.contains('droparea') || event.target.parentElement.classList.contains('droparea') ) {
+        event.preventDefault()
+        let element = (event.target.classList.contains('droparea')) ? event.target : event.target.parentElement
+        const aktiveJeton = document.querySelector('.dragging')
+        if (aktiveJeton.parentElement.nodeName == 'TD') {
+          element.appendChild(aktiveJeton.cloneNode(true))
+          element.querySelector('.dragging').classList.remove('dragging')
+        }
+        else element.appendChild(aktiveJeton)
+      }
+    })
+
+    function spielen() {
+      audio.play()
+      if (document.querySelector('#ausgabe span') !== null) {
+        document.getElementById('historie').innerHTML = document.querySelector('#ausgabe span').outerHTML + document.getElementById('historie').innerHTML
+      }
+      let zufall = Math.floor(Math.random() * 37)
+      let ausgabe = (zufall === 0) ? '<span style="color:' + farben[zufall] + '">ZERO</span>' : '<span style="color:' + farben[zufall] + '">' + zufall + '</span>'
+      kessel = -kesselzahlen.indexOf(zufall) * (360/37)
+      document.querySelector('#kessel img').style.transition = 'transform 22s'
+      document.querySelector('#kessel img').style.transform = 'rotate(' + (kessel + 3600) + 'deg)'
+
+
+      window.setTimeout(function () {
+        if (zufall !== 0) {
+          ausgabe += (zufall > 18) ? '<br>PASSE' : '<br>MANQUE'
+          ausgabe += (zufall % 2 === 0) ? '<br>PAIR' : '<br>IMPAIR'
+          ausgabe += (farben[zufall] === 'red') ? '<br>ROUGE' : '<br>NOIR'
+        }
+        document.getElementById('ausgabe').innerHTML = ausgabe
+        document.querySelector('#kessel img').style.transition = 'transform 1ms'
+        document.querySelector('#kessel img').style.transform = 'rotate(' + (kessel - 3600) + 'deg)'
+      }, 22000)
+    }
+  </script>
+</body>
+</html>

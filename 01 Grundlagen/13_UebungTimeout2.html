@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    body {
+      background: lightyellow;
+      font-family: sans-serif;
+    }
+    #Bereich {
+      width: 100%;
+      height: 50vh;
+      background-color: black;
+    }
+    #Bereich.gruen {
+      background-color: lightgreen;
+    }
+    #ball {
+      position: relative;
+      top: 100px;
+      background: black;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      opacity:0;
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>Reaktionsspiel 2</h1>
+  <p>Nach dem Drücken auf den Startknopf erscheint nach einiger Zeit ein schwarzer Kreis<br>
+    Bitte klicke so schnell wir möglich auf den schwarzen Kreis.</p>
+  <p><button>start</button>
+  <div id="Bereich">
+    <div id="ball"></div>
+  </div>
+  <p id="ausgabe"></p>
+  <script>
+    let starZeit
+    let stopZeit
+
+    document.querySelector('button').addEventListener('click', function () {
+      let bereich = document.querySelector('#Bereich')
+      bereich.classList.add('gruen')
+      let bereichsBreite = bereich.offsetWidth
+      let bereichsHoehe = bereich.offsetHeight
+      let top = Math.floor(Math.random() * (bereich.offsetHeight - 50))
+      let left = Math.floor(Math.random() * (bereich.offsetWidth - 50))
+      document.querySelector('#ball').style.top = top + 'px'
+      document.querySelector('#ball').style.left = left + 'px'
+      document.querySelector('#ball').style.transition = 'opacity 1ms'
+      document.querySelector('#ball').style.opacity = '0'
+      
+      zufallsZeit = Math.floor( Math.random() * 10000 ) + 3000
+      window.setTimeout(spielStart, zufallsZeit)
+    })
+    function spielStart () {
+      startZeit = new Date()
+      document.querySelector('#ball').style.transition = 'opacity 20s'
+      document.querySelector('#ball').style.opacity = '1'
+      document.querySelector('#ball').addEventListener('click', spielStop)
+    }
+    function spielStop () {
+      stopZeit = new Date ()
+      document.querySelector('#Bereich').classList.remove('gruen')
+      document.querySelector('#ball').removeEventListener('click', spielStop)
+      let ergebnis = (stopZeit - startZeit) / 1000
+      document.querySelector('#ausgabe').innerHTML = 'Du hast ' + ergebnis + ' Sekunden zum klicken gebraucht'
+    }
+  </script>
+</body>
+
+</html>

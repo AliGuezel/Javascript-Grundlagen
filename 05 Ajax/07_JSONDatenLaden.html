@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body>
+  <h1>JSON-Daten laden</h1>
+  <button>Daten laden</button>
+  <div id="ausgabe"></div>
+  <script>
+    document.querySelector('button').addEventListener('click', function () {
+      let anfrage = new XMLHttpRequest ()
+      anfrage.open('GET', 'personen.json?aktion=laden', true)
+      anfrage.addEventListener('readystatechange', function () {
+        if (this.readyState === 4) {
+          let personen = JSON.parse(this.responseText)
+          let ausgabe = '<table width="400" border="1">'
+          for (let person in personen['Angestellte']) {
+            ausgabe += '<tr><td>' + person 
+              ausgabe += '<td>' +  personen['Angestellte'][person]["anrede"]
+              ausgabe += '<td>' +  personen['Angestellte'][person]["vorname"]
+              ausgabe += '<td>' +  personen['Angestellte'][person]["nachname"]
+              ausgabe += '<td>' +  personen['Angestellte'][person]["geburtsdatum"]
+          }
+          ausgabe += '</table>'
+          document.getElementById('ausgabe').innerHTML = ausgabe
+        }
+      })
+      anfrage.send(null)
+    })
+
+  </script>
+</body>
+
+</html>

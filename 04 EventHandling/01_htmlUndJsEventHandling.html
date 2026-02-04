@@ -18,9 +18,16 @@
    
 
     window.onload = function () {
-
-      document.querySelectorAll('img')[1].onmouseover =  function () {anzeigen2('Klasse Hund')}
+// Aufrunf von Funktionen über JS-Eventhandler 
+// JavaScript Eventhandlern darf nur eine Funktionsreferenz zugewiesen werden, 
+// ohne das Klammern hinter dem Funktionsnamen gesetzt werden
       document.querySelectorAll('img')[1].onmouseout = leeren      
+      
+      
+// Alternativ kann auch eine anonyme Funktion zugewiesen werden die diese
+// bei ihren Aufruf eine Referenz auf sich selber zurück gibt   
+      document.querySelectorAll('img')[1].onmouseover =  function () {anzeigen2('Klasse Hund')}
+
 
       function anzeigen2(text) {
         document.querySelectorAll('figcaption')[1].innerHTML = text
@@ -33,6 +40,7 @@
 <body>
   <h1>Ereignisbehandlung in HTML und JavaScript</h1>
   <figure>
+    <!-- Aufrunf von Funktionen über HTML-Eventhandler -->
     <img src="img/katze.jpg" alt="" onmouseover="anzeigen('tolle Katze Text')" onmouseout="leeren()">
     <figcaption></figcaption>
   </figure>

@@ -1,0 +1,22 @@
+{
+  "Angestellte" : {
+    "001" : {
+      "anrede" : "Herr",
+      "vorname" : "Dominic",
+      "nachname" : "Manthei",
+      "geburtsdatum" : "03.08.1971"
+    },
+    "002" : {
+      "anrede" : "Frau",
+      "vorname" : "Ursula",
+      "nachname" : "Wölfel",
+      "geburtsdatum" : "03.06.1974"
+    },
+    "003" : {
+      "anrede" : "Frau",
+      "vorname" : "Simone",
+      "nachname" : "Wipper",
+      "geburtsdatum" : "13.05.1982"
+    }
+  }
+}

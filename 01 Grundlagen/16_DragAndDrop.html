@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaSCript Einführung</title>
+  <style>
+    #wrapper {
+      width: 600px;
+      margin: auto;
+      display: flex;
+    }
+    #wrapper section {
+      width: 46%;
+      margin: 2%;
+      background: rgb(0,0,0,0.5);
+    }
+    ul {
+      padding:50px 0;
+    }
+    li {
+      list-style-type: none;
+      background: rgba(155,250,250, 0.8);
+      margin: 10px;
+      font-size: 24px;
+      text-align: center;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+    <h1>Drag and Drop</h1>
+    <div id="wrapper">
+      <section>
+        <ul class="droparea">
+          <li draggable="true">Peter</li>
+          <li draggable="true">Klaus</li>
+          <li draggable="true">Eva</li>
+          <li draggable="true">Gertrud</li>
+        </ul>
+    </section>
+      <section>
+        <ul class="droparea ablage">
+
+        </ul>
+      </section>
+    </div>
+    <script>
+      document.querySelectorAll('li').forEach(function (elem) {
+        elem.addEventListener('dragstart', function (event) {
+          event.target.classList.add('dragging')
+        })
+        elem.addEventListener('dragend', function (event) {
+          event.target.classList.remove('dragging')
+        })
+      })
+      document.querySelectorAll('.droparea').forEach(function (elem) {
+        elem.addEventListener('dragover', function (event) {
+          event.preventDefault()
+        })
+        elem.addEventListener('drop', function (event) {
+          /* verschieben von Objekten
+          let ablageplatz
+          if (event.target.classList.contains('droparea')) ablageplatz = event.target
+          else if (event.target.parentElement.classList.contains('droparea')) ablageplatz = event.target.parentElement
+          ablageplatz.appendChild(document.querySelector('.dragging'))
+          console.log(event.target.nodeName + ' - ' +  ablageplatz.nodeName)
+          */
+          // klonen von Objekten
+          let ablageplatz
+          if (event.target.classList.contains('droparea')) ablageplatz = event.target
+          else if (event.target.parentElement.classList.contains('droparea')) ablageplatz = event.target.parentElement
+          ablageplatz.appendChild(document.querySelector('.dragging').cloneNode(true))
+          ablageplatz.querySelector('.dragging').classList.remove('dragging')
+        })
+        
+      })
+    </script>
+</body>
+</html>

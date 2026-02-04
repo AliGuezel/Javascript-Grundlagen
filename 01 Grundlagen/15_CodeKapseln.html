@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body>
+  <h1>Überschrift</h1>
+  <div id="ausgabe"></div>
+  <button>kontostand</button>
+  <hr>
+  <div id="ausgabe2"></div>
+  <button>kontostand</button>
+  <hr>
+  <div id="ausgabe3"></div>
+  <button>kontostand</button>
+  
+  <script>
+    // https://molily.de/js/organisation-module.html#scope
+
+    // Version 1
+    // Alle Variablen und Funktionen sind gekapselt in einer Funktion
+    // Globaler Zugriff nicht möglich
+    (function(){
+      let geld = 5000
+      document.querySelector('button').addEventListener('click', ausgabe)
+      function ausgabe () {
+        document.querySelector('#ausgabe').innerHTML = 'Du hast ' + geld.toFixed(2) +  ' €'
+      }  
+    })()
+    
+
+    // Version 2
+    // Alle Variablen und Funktionen sind als Objekt definiert
+    // Globaler Zugriff nur über das Objekt möglich
+    // Zugriff auf alle Variablen (Eigenschaften) und Funktionen (Methoden) möglich
+    var Schnittstelle = {
+      geld: 5000,
+      zinsen : false,
+      zinssatz : 0.03,
+      geldEinzahlen : function (betrag) {
+        Schnittstelle.geld += betrag
+      },
+      geldAbheben : function (betrag) {
+        Schnittstelle.geld -= betrag
+      },
+      kontostandAusgaben : function () {
+        document.querySelector('#ausgabe2').innerHTML = 'Du hast ' + Schnittstelle.geld.toFixed(2) +  ' €'
+      }
+    }
+    Schnittstelle.geldAbheben(500)
+    Schnittstelle.geldEinzahlen(5000)
+
+    document.querySelectorAll('button')[1].addEventListener('click', Schnittstelle.kontostandAusgaben)
+
+    // Version 3
+    // Alle Variablen und Funktionen sind innerhalb einer anonymen Funktion gekapselt
+    // Globaler Zugriff nur über öffentliche Funktionen möglich die die anonyme Funktion 
+    // mit return zurückgibt.
+    // Zugriff auf öffentlche Valiablen (Eigenschaften) und Funktionen (Methoden) möglich
+    var Api = (function () {
+      // privat
+      let geld = 8000
+      let zinsen = false
+      let zinssatz = 0.03
+
+      return {
+        // öffentlich
+        kontostandAusgaben : function () {
+          document.querySelector('#ausgabe3').innerHTML = 'Du hast ' + geld.toFixed(2) +  ' €'
+        }
+      }
+    }) ()
+
+    document.querySelectorAll('button')[2].addEventListener('click', Api.kontostandAusgaben)
+
+  </script>
+</body>
+
+</html>

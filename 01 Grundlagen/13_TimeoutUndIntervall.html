@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body>
+  <h1>Timeout und Intervall</h1>
+  <button>stop</button>
+  <script>
+    // https://www.javascript-kurs.de/javascript-window-setTimeout.htm
+    window.setTimeout(machwas, 5000)
+    function machwas () {
+      document.querySelector('h1').innerHTML = 'Neue Überschrift'
+    }
+    // https://www.javascript-kurs.de/javascript-window-setInterval.htm
+    let farbe = window.setInterval(function () {
+      let rot =  Math.floor(Math.random() * 128) + 127
+      let gruen =  Math.floor(Math.random() * 256)
+      let blau =  Math.floor(Math.random() * 256)
+      document.body.style.backgroundColor = 'rgb(' + rot + ',' + gruen + ', ' + blau + ')'
+    }, 500)
+
+    document.querySelector('button').addEventListener('click', function () {
+      window.clearInterval(farbe)
+    })
+
+
+  </script>
+</body>
+
+</html>

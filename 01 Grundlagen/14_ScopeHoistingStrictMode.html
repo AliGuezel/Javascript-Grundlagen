@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body>
+  <h1>Überschrift</h1>
+  <script>
+    // "use strict"
+    // https://www.mediaevent.de/javascript/strict-mode.html
+    
+
+    let i = 5
+    document.write('<h3>' + i + '</h3>')
+    
+    window.eval('lo = 7')
+
+    document.write('<h3>' + lo + '</h3>')
+    /* Deklarationen von Variablen mit var oder von Funktionen werden
+    an den Anfang des Codes verlagert - HOISTING */
+    // https://www.devguide.at/javascript/js-scoping-hoisting-und-var-let-const/
+    // https://ciksiti.com/de/chapters/10252-function-hoisting-in-javascript
+
+  document.write(zahl, '<br>')
+  var zahl = 5
+  document.write(zahl, '<br>')
+
+  /* wird zu */
+  var zahl
+  document.write(zahl, '<br>')
+  zahl = 5
+  document.write(zahl, '<hr>')
+
+
+   /* Deklarationen von Varibalen mit let oder Konstanten mit const 
+   werden an den Anfang eines Block verlagert 
+   Ein Block wird durch { } gekennzeichnet */
+
+
+   /* var -Variablen und Funktionen sind global gültig, 
+   es sei denn sie werden innerhab einer Funktion deklariert, 
+   dann sind sie innerhalb Funktion gültig global scope, function scope */
+   // https://molily.de/js/variablen.html#globale-variablen
+   // https://molily.de/js/variablen.html#funktionsvariablen
+  var name = 'Dominic'
+  document.write(name, '<br>')
+  ausgabe()
+
+  function party () {
+    document.write("Let's Party</br>")
+  }
+
+  function ausgabe () {
+    function party () {
+      document.write("Let's Party hard</br>")
+    }
+    var name = 'Peter'
+    document.write(name, '<br>')
+    party()
+  }
+  
+  document.write(name, '<br>')
+
+  party()
+  document.write('<hr>')
+  /* let -Variablen und Konstanten sind im aktuellen Block gültig block scope */
+  // https://molily.de/js/variablen.html#block-variablen
+  // https://molily.de/js/variablen.html#block-konstanten
+  for (var z = 1; z <= 100; z++) {
+    document.write(z, ', ')
+  }
+
+  document.write('<p>Am Ende ist i = ' + z)
+
+  </script>
+</body>
+
+</html>

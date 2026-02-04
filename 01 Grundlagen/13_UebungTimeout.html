@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    body {
+      background: lightyellow;
+      font-family: sans-serif;
+    }
+    #Bereich {
+      width: 100%;
+      height: 50vh;
+      background-color: black;
+    }
+    #Bereich.gruen {
+      background-color: green;
+    }
+    #Bereich.rot {
+      background-color: maroon;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>Reaktionsspiel 1</h1>
+  <p>Nach dem Drücken auf den Startknopf änder sich der schwraze Bereich zu grün.<br>
+    Nach kurzer Zeit wird der Bereich rot.<br>
+    Bitte klicke so schnell wir mölich auf den roten Bereich.</p>
+  <p><button>start</button>
+  <div id="Bereich"></div>
+  <p id="ausgabe"></p>
+  <script>
+    let starZeit
+    let stopZeit
+
+    document.querySelector('button').addEventListener('click', function () {
+      document.querySelector('#Bereich').classList.add('gruen')
+      zufallsZeit = Math.floor( Math.random() * 15000 ) + 5000
+      window.setTimeout(spielStart, zufallsZeit)
+    })
+    function spielStart () {
+      startZeit = new Date()
+      document.querySelector('#Bereich').classList.add('rot')
+      document.querySelector('#Bereich').classList.remove('gruen')
+      document.querySelector('#Bereich').addEventListener('click', spielStop)
+    }
+    function spielStop () {
+      stopZeit = new Date ()
+      document.querySelector('#Bereich').classList.remove('rot')
+      document.querySelector('#Bereich').removeEventListener('click', spielStop)
+      let ergebnis = (stopZeit - startZeit) / 1000
+      document.querySelector('#ausgabe').innerHTML = 'Du hast ' + ergebnis + ' Sekunden zum klicken gebraucht'
+    }
+  </script>
+</body>
+
+</html>

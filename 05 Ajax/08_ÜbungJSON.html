@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      border: 5px inset gray;
+    }
+
+    td,
+    th {
+      padding: 2px 10px;
+      border: 1px solid gray;
+    }
+
+    button {
+      margin: 0 5px;
+    }
+
+    label {
+      display: inline-block;
+      width: 100px;
+      text-align: right;
+      margin-right: 10px;
+    }
+
+    input,
+    select {
+      width: 170px;
+      padding: 1px 2px;
+      box-sizing: content-box;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Personalverwaltung</h1>
+  <h2>Angestellte</h2>
+  <table id="personaldaten">
+  </table>
+  <p><button id="neuermitarbeiter">Neuer Mitarbeiter</button></p>
+  <div id="ausgabe"></div>
+
+  <script>
+
+    var personen
+
+    function encodeHTML (text) {
+      return text.replace(/"/g, "&quot;").replace(/\t/g, " ")
+    }
+
+    function decodeHTML (text) {
+      return text.replace(/&quot;/g, '"')
+    }
+
+    function neuerMitarbeiter() {
+      if (document.getElementById('anrede').value == '') {
+        window.alert('Sie müssen eine Anrede angeben')
+        document.getElementById('anrede').focus()
+      } else if (document.getElementById('vorname').value.length < 2) {
+        window.alert('Sie müssen einen Vornamen angeben')
+        document.getElementById('vorname').focus()
+      } else if (document.getElementById('nachname').value.length < 2) {
+        window.alert('Sie müssen einen Nachnamen angeben')
+        document.getElementById('nachname').focus()
+      } else if (document.getElementById('gebdat').value == '') {
+        window.alert('Sie müssen einen Geburtsdatum angeben')
+        document.getElementById('gebdat').focus()
+      } else {
+        let anfrage = new XMLHttpRequest()
+        let daten = '{"aktion":"new",' +
+          '"anrede":"' + document.getElementById('anrede').value + '",' +
+          '"vorname":"' + encodeHTML(document.getElementById('vorname').value) + '",' +
+          '"nachname":"' + encodeHTML(document.getElementById('nachname').value) + '",' +
+          '"gebdat":"' + document.getElementById('gebdat').value + '"}'
+        anfrage.open('post', 'personalverwaltung.php', true)
+        anfrage.setRequestHeader('Content-Type', 'application/json')
+        anfrage.addEventListener('readystatechange', function () {
+          if (anfrage.readyState === 4) {
+            if (this.responseText == 'ok') {
+              datenLaden()
+              document.getElementById('ausgabe').innerHTML = ''
+            } else {
+              window.alert(this.responseText)
+            }
+          }
+        })
+        anfrage.send(daten)
+      }
+    }
+    
+    function updateMitarbeiter() {
+      if (document.getElementById('anrede').value == '') {
+        window.alert('Sie müssen eine Anrede angeben')
+        document.getElementById('anrede').focus()
+      } else if (document.getElementById('vorname').value.length < 2) {
+        window.alert('Sie müssen einen Vornamen angeben')
+        document.getElementById('vorname').focus()
+      } else if (document.getElementById('nachname').value.length < 2) {
+        window.alert('Sie müssen einen Nachnamen angeben')
+        document.getElementById('nachname').focus()
+      } else if (document.getElementById('gebdat').value == '') {
+        window.alert('Sie müssen einen Geburtsdatum angeben')
+        document.getElementById('gebdat').focus()
+      } else {
+        let anfrage = new XMLHttpRequest()
+        let daten = '{"aktion":"update",' +
+          '"pId":"' + document.getElementById('pId').value + '",' +
+          '"anrede":"' + document.getElementById('anrede').value + '",' +
+          '"vorname":"' + encodeHTML(document.getElementById('vorname').value) + '",' +
+          '"nachname":"' + encodeHTML(document.getElementById('nachname').value) + '",' +
+          '"gebdat":"' + document.getElementById('gebdat').value + '"}'
+        anfrage.open('post', 'personalverwaltung.php', true)
+        anfrage.setRequestHeader('Content-Type', 'application/json')
+        anfrage.addEventListener('readystatechange', function () {
+          if (anfrage.readyState === 4) {
+            if (this.responseText == 'ok') {
+              datenLaden()
+              document.getElementById('ausgabe').innerHTML = ''
+            } else {
+              window.alert(this.responseText)
+            }
+          }
+        })
+        anfrage.send(daten)
+      }
+    }
+
+    function datenLaden() {
+      let xhr = new XMLHttpRequest()
+      let daten = '{"aktion":"laden"}'
+      xhr.open('post', 'personalverwaltung.php', true)
+      xhr.setRequestHeader('Content-Type', 'application/json')
+      xhr.addEventListener('readystatechange', function () {
+        if (xhr.readyState === 4) {
+          personen = JSON.parse(xhr.responseText)
+          let ausgabe = '<tr><th>Nr<th>Anrede<th>Vorname<th>Nachname<th>Geburtsdatum<th>Funktionen'
+          for (let person in personen['Angestellte']) {
+            ausgabe += '<tr><td>' + person
+            ausgabe += '<td>' + personen['Angestellte'][person]["anrede"]
+            ausgabe += '<td>' + personen['Angestellte'][person]["vorname"]
+            ausgabe += '<td>' + personen['Angestellte'][person]["nachname"]
+            ausgabe += '<td>' + personen['Angestellte'][person]["geburtsdatum"]
+            ausgabe += '<td id="P' + person + '"><button class="del">🗑️</button><button class="edit">🖊️</button>'
+          }
+          document.getElementById('personaldaten').innerHTML = ausgabe
+        }
+      })
+      xhr.send(daten)
+    }
+
+    function zeigeFormular() {
+      let ausgabe = '<form id="mitarbeiter">' +
+        '<h2>Mitarbeiterdaten</h2>' +
+        '<input id="pId" type="hidden" value="0">' +
+        '<p><label for="anrede">Anrede:</label><select id="anrede"><option value="">Bitte wählen Sie</option><option value="1">Frau</option><option value="2">Herr</option></select>' +
+        '<p><label for="vorname">Vorname:</label><input id="vorname">' +
+        '<p><label for="nachname">Nachname:</label><input id="nachname">' +
+        '<p><label for="gebdat">Geburtsdatum:</label><input type="date" id="gebdat">' +
+        '<p><button>Mitarbeiter speichern</button></form>'
+      document.getElementById('ausgabe').innerHTML = ausgabe
+    }
+
+    function datumUmwandeln(datum) {
+      let datumArray = datum.split('.')
+      let datumEn = datumArray[2] + '-' + datumArray[1] + '-' + datumArray[0]
+      return datumEn
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+      document.getElementById('personaldaten').addEventListener('click', function (event) {
+        let target = event.target
+        if (target.classList.contains('del')) {
+          let anfrage = new XMLHttpRequest()
+          let daten = '{"aktion":"delete", "id":"' + Number(target.parentNode.id.slice(-4)) + '"}'
+          anfrage.open('post', 'personalverwaltung.php', true)
+          anfrage.setRequestHeader('Content-Type', 'application/json')
+          anfrage.addEventListener('readystatechange', function () {
+            if (anfrage.readyState === 4) {
+              if (this.responseText == 'ok') {
+                target.parentNode.parentNode.parentNode.removeChild(target.parentNode.parentNode)
+              } else {
+                window.alert(this.responseText)
+              }
+            }
+          })
+          anfrage.send(daten)
+        } else if (target.classList.contains('edit')) {
+          zeigeFormular()
+          /*
+          document.getElementById('gebdat').value = datumUmwandeln(target.parentNode.previousSibling.innerHTML)
+          document.getElementById('nachname').value = target.parentNode.previousSibling.previousSibling.innerHTML
+          document.getElementById('vorname').value = target.parentNode.previousSibling.previousSibling.previousSibling.innerHTML
+          let anrede = (target.parentNode.previousSibling.previousSibling.previousSibling.previousSibling.innerHTML == 'Herr') ? 2 : 1
+          document.getElementById('anrede').value = anrede
+          document.getElementById('pId').value = Number(target.parentNode.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.innerHTML)
+          */
+          let pId =  target.parentNode.id.slice(-4)
+          document.getElementById('pId').value = Number(pId)
+          document.getElementById('anrede').value = (personen["Angestellte"][pId]["anrede"] == 'Herr') ? 2 : 1
+          document.getElementById('vorname').value = decodeHTML(personen["Angestellte"][pId]["vorname"])
+          document.getElementById('nachname').value = decodeHTML(personen["Angestellte"][pId]["nachname"])
+          document.getElementById('gebdat').value = datumUmwandeln(personen["Angestellte"][pId]["geburtsdatum"])
+          document.getElementById('mitarbeiter').setAttribute('action', 'javascript:updateMitarbeiter()')
+        }
+      })
+
+      document.getElementById('neuermitarbeiter').addEventListener('click', function () {
+        zeigeFormular()
+        document.getElementById('mitarbeiter').setAttribute('action', 'javascript:neuerMitarbeiter()')
+      })
+
+      datenLaden()
+
+    })
+  </script>
+</body>
+
+</html>

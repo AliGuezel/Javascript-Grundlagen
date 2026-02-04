@@ -13,13 +13,17 @@
   
   <script>
     document.querySelector('button').addEventListener('click', function(){
+
       let xhr = new XMLHttpRequest ()
+      // Das XHR-Objekt baut eine Verbindung zum Server auf und eine Anfrage wird definiert
       xhr.open('GET', 'info.txt', true)
+      //Eventhandler setzten => Funktion wird ausgeführt wenn sich die Eigenschaft readyState des XHR-Objektes ändert
       xhr.onreadystatechange = function(){
         if (xhr.readyState === 4) {
           document.getElementById('ausgabe').innerHTML += xhr.responseText
         }
       }
+			// die definierte Anfrage aus Zeile 19 wird an den Server gesendet
       xhr.send()
     })
   </script>

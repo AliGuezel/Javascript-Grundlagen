@@ -8,9 +8,16 @@
     table {
       border-collapse: collapse;
     }
-    table, td, th {
+
+    table,
+    td,
+    th {
       border: 1px solid gray;
       padding: 5px 10px;
+    }
+
+    tr:not(tr:first-child):hover {
+      background-color: lightgreen;
     }
   </style>
   <script>
@@ -26,17 +33,32 @@
             let data = xhr.responseXML
             buch = data.getElementsByTagName('book')
             ausgabe.innerHTML = buch.length
-            let output =  '<table><tr><th>title<th>Author<th>Genre<th>price'
+            let output = '<table><tr><th>title<th>Author<th>Genre<th>price'
             for (let i = 0; i < buch.length; i++) {
-              let title = ''
-              let author = ''
-              let genre = ''
-              let price = ''
-              output += '<tr><td>' + title + '<td>' + author + '<td>' + genre + '<td>' + price  
+              let title = buch[i].getElementsByTagName('title')[0].childNodes[0].nodeValue
+              let author = buch[i].getElementsByTagName('author')[0].childNodes[0].nodeValue
+              let genre = buch[i].getElementsByTagName('genre')[0].childNodes[0].nodeValue
+              let price = buch[i].getElementsByTagName('price')[0].childNodes[0].nodeValue
+              let id = buch[i].id
+              output += '<tr id="' + id + '"><td>' + title + '<td>' + author + '<td>' + genre + '<td>' + price
             }
             output += '</table>'
             bookinfo.innerHTML = output
-            
+
+            let zeilen = document.querySelectorAll('tr')
+            for (let i = 1; i < zeilen.length; i++) {
+              zeilen[i].addEventListener('mouseover', function (e) {
+                let cdinfo = ''
+                cdinfo += 'Author: ' + data.getElementById(e.target.parentNode.id).getElementsByTagName('author')[0].childNodes[0].nodeValue + '<br>'
+                cdinfo += 'Titel: ' + data.getElementById(e.target.parentNode.id).getElementsByTagName('title')[0].childNodes[0].nodeValue + '<br>'
+                cdinfo += 'Genre: ' + data.getElementById(e.target.parentNode.id).getElementsByTagName('genre')[0].childNodes[0].nodeValue + '<br>'
+                cdinfo += 'Price: ' + data.getElementById(e.target.parentNode.id).getElementsByTagName('price')[0].childNodes[0].nodeValue + '<br>'
+                cdinfo += 'Veröffentlichung: ' + data.getElementById(e.target.parentNode.id).getElementsByTagName('publish_date')[0].childNodes[0].nodeValue + '<br>'
+                cdinfo += 'Beschreibung: ' + data.getElementById(e.target.parentNode.id).getElementsByTagName('description')[0].childNodes[0].nodeValue + '<br>'
+                ausgabe.innerHTML = cdinfo
+              })
+            }
+
             /*
               XML-DOM Eigenschaften und Methoden
               In XML arbeiten wir mit Nodes
@@ -53,7 +75,7 @@
                 - nodeName eines Textknotens ist immer #text
 
               Der nodeValue gibt den Wert an, der in einem Knoten gespeichert ist
-                - nodeValue eines Elements ist immer undefined
+                - nodeValue eines Elements ist immer undefined oder null
                 - nodeValue  eines Attributs ist der Wert der dem Attribut zugewiesen ist
                 - nodeValue eines Textknotens ist der eigentliche Text
 
@@ -100,3 +122,4 @@
 </body>
 
 </html>
+

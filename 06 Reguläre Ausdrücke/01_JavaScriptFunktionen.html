@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body>
+  <h1>Reguläre Ausdrücke</h1>
+  <script>
+    let text = 'Ich gehe mit meinen 2 Schwestern 3 Mal zu McDonals, 5 Hamburger Essen'
+    let ausdruck = /\d/g
+
+    /* .match() gibt alle Treffer als Array zurück */
+    let ausgabeArray = text.match(ausdruck)
+    document.write( ausgabeArray , "<hr>")
+
+    /* .search() gibt die Position des 1. Treffers als index zurück  */
+    let ausgabe = text.search(ausdruck)
+    document.write( ausgabe , "<hr>")
+
+    /* .replace() ersetzt die gefunden Treffer durch einen Text */
+    ausgabe = text.replace(ausdruck, 'x')
+    document.write( ausgabe , "<hr>")
+
+
+    /* test() gibt einen bBoolean zurück, ob die Suche erfolgreich war. */
+    ausgabe = ausdruck.test(text)
+    document.write( ausgabe , "<hr>" )
+
+    /*
+    .test()
+
+    .match()
+    .replace()                                                             
+    .search()
+    */
+
+  </script>
+</body>
+
+</html>
