@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body>
+  <h1>logische Operatoren</h1>
+  <script>
+    let test1 = false
+    let test2 = false
+    /*  && logisches und
+    test1    test2   ergebnis
+     true     true    true
+     false    true    false 
+     true     false   false
+     false    false    false
+    */
+     if (test1 && test2) {
+      document.write ('<p>beide Tests sind wahr.')
+     } else {
+      document.write ('<p>mind. eine Test ist nicht wahr.')
+     }
+
+    /*  || logisches oder
+    test1    test2   ergebnis
+     true     true    true
+     false    true    true 
+     true     false   true
+     false    false   false
+     */
+     if (test1 || test2) {
+      document.write ('<p>mind. eine Test ist wahr.')
+     } else {
+      document.write ('<p>beide Tests sind nicht wahr.')
+     }
+
+     /* ! logisches nicht 
+        ! ein Ausrufezeichen wandelt einen Wahrheitswert ind Gegenteil um.
+        aus true wird false   und aus   false wird true */
+     document.write('<p>', !test1)
+
+</script>
+
+</body>
+</html>
+
+<!--
+  de https://wiki.selfhtml.org/wiki/JavaScript/Operatoren/Logische_Operatoren
+  en https://www.w3schools.com/js/js_comparisons.asp#midcontentadcontainer
+-->

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body>
+  <!--
+    Schreiben Sie einen kleinen Kreditrechner.
+    Die Benutzer soll aufgeforder werden Kredithöhe und Zinssatz einzugeben.
+    Der Kreditrechner soll den gesammten Rückzahlungsbetrag ausgeben.
+
+    Rückzahlungsbetrag = Kreditbetrag*(1+Zinssatz/100)
+  -->
+  <h1>Aufgabe 02</h1>
+  <script>
+    let kreditbetrag = window.prompt('Wieviel Geld möchten Sie sich leihen?')
+    let zinssatz = window.prompt('Wie hoch ist der Zinssatz')
+    let rueckzahlung = kreditbetrag * (1 + zinssatz / 100)
+    document.write('Wenn Sie sich ' + kreditbetrag + ' Euro zu ' + zinssatz + '% Zinsen leihen, müssen Sie ' + rueckzahlung + ' Euro zurückzahlen.')
+  </script>
+</body>
+</html>
+

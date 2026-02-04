@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body style="font-family:sans-serif">
+  <h1>Bedingter Code</h1>
+  <h2>Vergleiche</h2>
+  <script>
+    let a = 2
+    let b = 3
+    let c = '3'
+
+    document.write('<p>Wert von a:' + a + '</p>')
+    document.write('<p>Wert von b:' + b + '</p>')
+    document.write('<p>Wert von c:"' + c + '"</p>')
+
+    // > - größer als - true wenn der linke Wert größer ist als der rechte Wert
+    document.write('<p>Vergleich: a größer b? ' + (a > b) + '</p>')
+
+    // < - kleiner als - true wenn der linke Wert kleiner ist als der rechte Wert
+    document.write('<p>Vergleich: a kleiner b? ' + (a < b) + '</p>')
+
+    // >= - größer oder gleich - true wenn der linke Wert größer ist als der rechte Wert oder gleich ist
+    document.write('<p>Vergleich: a größer oder gleich b? ' + (a >= b) + '</p>')
+
+    // <= - kleiner oder gleich - true wenn der linke Wert kleiner ist als der rechte Wert oder gleich ist
+    document.write('<p>Vergleich: a kleiner oder gleich b? ' + (a <= b) + '</p>')
+
+    // == - ist gleich - true wenn beide Werte gleich sind
+    document.write('<p>Vergleich: a gleich b? ' + (a == b) + '</p>')
+    // hier wird ggf. das Datentyp beim Vergleich ignoriert, also 3 gleich '3'
+    document.write('<p>Vergleich: b gleich c? ' + (b == c) + '</p>')
+
+    // === - ist identisch, true wenn Wert und Datentyp übereinstimmen
+    document.write('<p>Vergleich: b identisch c? ' + (b === c) + '</p>')
+
+    // != - nicht gleich
+    document.write('<p>Vergleich: b nicht gleich c? ' + (b != c) + '</p>')
+
+    // !== - nicht identisch
+    document.write('<p>Vergleich: b nicht identisch c? ' + (b !== c) + '</p>')
+  </script>
+  <h2>Die if-Anweisung</h2>
+  <script>
+
+    let eingabe = parseInt(window.prompt('Bitte geben Sie eine Zahl ein'))
+    // parseInt() liefert eine ganze Zahl, alles hinter Ziffern wird abgeschnitten
+
+    document.write('<p>Sie haben eine ' + eingabe + ' eingegeben</p>')
+
+    if (window.isNaN(eingabe)) {
+      // dieser Block wird ausgeführt wenn die Eingabe keine Zahl ist
+      document.write('<p>Es wurde keine gültige Zahl eingegeben')
+    } else {
+      // dieser Block wird ausgeführt wenn die Eingabe eine Zahl ist
+      if (eingabe < 50) {
+        document.write('<p>Die eingegebene Zahl ist kleiner als 50')
+      } else if (eingabe == 50) {
+        document.write('<p>Die eingegebene Zahl ist gleich 50')
+      } else {
+        document.write('<p>Die eingegebene Zahl ist größer als 50')
+      }
+    }
+
+    /*
+        Das Ausführen von Anweisungen kann von Bedingungen abhängig gemacht werden.
+        In einer Verzweigung (bedingte Anweisung) wird der Anweisungsblock nur durchlaufen wenn die Bedingung erfüllt ist.
+        Alternativ kann beim Nichterfüllen der Bedingung (else) ein zweiter Anweisungsblock durchlaufen werden 
+
+           if ( eingabe < 50 ) {
+            document.write('<p>Die eingegebene Zahl ist kleiner als 50')
+          } else {
+            document.write('<p>Die eingegebene Zahl ist größer oder gleich 50')
+          }
+    
+          
+          if ( eingabe < 50 ) 
+            document.write('<p>Die eingegebene Zahl ist kleiner als 50')
+          else
+            document.write('<p>Die eingegebene Zahl ist größer oder gleich 50')
+    
+    */
+
+
+  </script>
+
+
+</body>
+
+</html>

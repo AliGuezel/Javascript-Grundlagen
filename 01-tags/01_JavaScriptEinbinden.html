@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+   <!-- JavaScript innerhalb eines Script-TAGs in HTML einbinden -->
+  <script>
+    window.alert('Hallo')
+  </script>
+  <style>
+    h1 {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 onclick="window.alert('Du hast die Überschrift angeklickt')">Einbinden von JavaScript</h1>
+    <!-- JavaScript aus einer Datei laden -->
+    <script src="01_meinScript.js"></script>
+    <p><a href="http://www.google.de">Link zu eine URL</a></p>
+    <p><a href="mailto:dominic@manth-ei.de">Link zu einer eMail-Adresse</a></p>
+    <p><a href="tel:015172675223">Link zu einer Telefonummer</a></p>
+    <!-- Javascript als href-Attribut bei einem a-TAG-->
+    <p><a href="javascript:window.alert('Link zu JavaScript')">Link zu JavaScript</a></p>
+    
+</body>
+</html>
+

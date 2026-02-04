@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body>
+  <h1>Das Date-Objekt</h1>
+  <script>
+    
+    let heute = new Date()
+    let geburt = new Date(1971, 7, 3, 5, 43)
+    let geburt2 = Date.parse('1971-08-03')
+
+    document.write('<p>' + heute)
+    document.write('<p>' + geburt)
+    document.write('<p>' + geburt2)
+    
+    let aktuellesJahr = heute.getFullYear()
+
+  
+   //Ausgabe Tag
+   document.write('<p>Tag: ' + heute.getDate())
+
+    //Ausgabe Jahr
+   document.write('<p>Tag: ' + aktuellesJahr)
+
+    //Ausgabe Monat
+   document.write('<p>Monat: ' +  (heute.getMonth() + 1))
+
+   // das Jahr in Datum wird um 1 erhöht
+    heute.setFullYear(aktuellesJahr + 1)
+
+    // Datum in einem Jahr:
+    document.write('<p>Datum in einem Jahr: ' + heute.getDate() + '.' +  (heute.getMonth() + 1) +  '.'  + heute.getFullYear())
+
+  </script>
+
+</body>
+
+</html>
+
+<!--
+  de https://wiki.selfhtml.org/wiki/JavaScript/Objekte/Date/Einf%C3%BChrung
+  en https://www.w3schools.com/js/js_dates.asp
+-->
+

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body>
+  <h1>Arithmetische Operatoren</h1>
+  <script>
+    /*
+      Addition +
+      Subtraktion -
+      Multiplikation *
+      Division /
+      Modulo %
+    */
+
+    let ergebnis = 1 + 2 * 3; 
+    document.write('Der Wert von 1 + 2 * 3 = ', ergebnis, '<br>')
+ 
+    ergebnis = (1 + 2) * 3; 
+    document.write('Der Wert von (1 + 2) * 3 = ', ergebnis, '<br>')
+
+    ergebnis = 14 % 5; 
+    document.write('Der Wert von 14 % 5 = ', ergebnis, '<br>')
+
+    // Verketten von Strings mit +
+    document.write('Dominic ' + ' ' + 'Manthei' + '<br>')
+
+    document.write('Eier ' + ergebnis + ergebnis + '<br>')
+    document.write('Eier ' + (ergebnis + ergebnis) + '<br>')
+    document.write(ergebnis + ergebnis + ' Eier' + '<br>')
+
+    // Casten von Datentypen  mit Number() String() 
+    let zahl1 = window.prompt('Bitte geben Sie eine Zahl ein')
+    let zahl2 = window.prompt('Bitte geben Sie eine 2. Zahl ein')
+    let summe = Number(zahl1) + Number(zahl2)
+    document.write('Die Summe von ' + zahl1 + ' und ' + zahl2 + ' = ' + summe )
+
+    // Rechenoperationen mit Zuweisung
+    let zahl = 2
+    zahl = zahl + 3  // 5
+    zahl += 3        // 8
+    zahl -= 2        // 6
+    zahl *= 3        // 18
+    zahl /= 2        // 9
+    zahl %= 3        // 0
+
+    // Inkrementor Dekrementor
+
+    zahl = zahl + 1  // 1
+    zahl += 1        // 2
+    zahl++           // 3
+    ++zahl           // 4
+    zahl--           // 3
+    --zahl           // 2
+    
+    document.write('<p>', zahl, '</p>')
+
+
+
+  </script>
+</body>
+
+</html>
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body>
+  <h1>Das Text-Objekt</h1>
+  <script>
+    let text = 'Hangman'
+    let text2 = new String('Peter')
+
+    document.write('<p>' + text + ' ' + text2)
+    document.write('<p>' + text[0])
+    document.write('<p>' + text[1])
+    document.write('<p>' + text[2])
+    document.write('<p>' + text[3] + '<hr>')
+
+    // Schleife die einen Text durchläuft
+    for (let i = 0; i < text.length; i++) {
+      document.write(i + ' ' + text[i] + ', ')
+    }
+
+    document.write('<hr>')
+
+    for (let position in text) {
+      document.write(position + ' ' + text[position] + ', ')
+    }
+
+    document.write('<hr>')
+
+    document.write('<p>Text: ' + text)
+    // Länge des Textes
+    document.write('<p>Länge des Textes: ' + text.length)
+    
+      // Zeichen an der ersten Position
+    document.write('<p>erstes Zeichen: ' + text.charAt(0))
+    
+      // Position in der Zeichentabelle
+    document.write('<p>erstes Zeichen: ' + text.charCodeAt(0))
+    
+      // Text Verketten
+    document.write('<p>Text Verketten: '.concat(text, ' ', text2))
+    document.write('<p>Text Verketten: ' + text + ' ' + text2)
+    
+      // Suchen nach Zeichen
+    document.write('<p>Suche: das g im Text: ' + text.indexOf('man'))
+    
+      // Ersetzen von Zeichen
+    document.write('<p>Ersetze "man" mit "animal": ' + text.replace('man', 'animal'))
+    
+      // Teilzeichnkette
+    document.write('<p>Teilzeichenkette :' + text.slice(2, 5))
+    document.write('<p>Teilzeichenkette :' + text.slice(0, -3))
+    document.write('<p>Teilzeichenkette :' + text.slice(-3))
+      
+      // Zeichenkette zerteilen
+    document.write('<p>Zeichenkette zerteilen: ' + 'ab,cd,ef,gh'.split(',')[2]) 
+      
+    // Text umwandeln
+      document.write('<p>Kleinschreibung: ' + text.toLowerCase())
+      document.write('<p>Großschreibung: ' + text.toUpperCase())
+   
+
+    
+
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body>
+  <h1>Funktionen</h1>
+  <script>
+    function trennlinie (anzahl = 10) {
+      document.write('<p>')
+        for (let i = 1; i <= anzahl; i++) {
+          document.write('-')
+        } 
+    }
+
+    function mwst (netto, p = 19) {
+      let brutto = netto * (1 + p / 100)
+      return brutto.toFixed(2)
+    }
+
+    document.write('<p>Dominic')
+    trennlinie ()  
+    document.write('<p>Manthei')
+    trennlinie (20)  
+    trennlinie (5)  
+    trennlinie ()
+    let netto = 5.40
+    document.write('<p>' + netto.toFixed(2) + ' € zzgl. MwSt 19% = ' + mwst(5.4))
+    document.write('<p>' + netto.toFixed(2) + ' € zzgl. MwSt 7% = ' + mwst(5.4, 7))
+    document.write('<p>' + netto.toFixed(2) + ' € zzgl. MwSt 0% = ' + mwst(5.4, 0))
+    document.write('<p>' + netto.toFixed(2) + ' € zzgl. MwSt 100% = ' + mwst(5.4, 100))
+
+
+</script>
+</body>
+
+</html>

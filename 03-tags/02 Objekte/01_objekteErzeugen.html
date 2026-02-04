@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body>
+  <h1>Objekte erzeugen</h1>
+  <script>
+    // mit dem Konstruktor new wird eine neue Instanz eines Objekts erzeugt
+
+    let datum = new Date()
+
+    let text = new String('Peter')
+    // Kurzschreibweise:    let text = 'Peter'
+
+    let zahl = new Number(6)
+    // Kurzschreibweise:    let zahl = 6
+
+    let test = new Boolean(true)
+    // Kurzschreibweise:    let test = true
+
+    document.write(datum, '<br>', text, '<br>', zahl)
+    
+    // https://de.wikipedia.org/wiki/JavaScript_Object_Notation
+    
+    let Figur = {
+      "name":"Gandalf", 
+      "alter":278, 
+      "punktestand":1024
+    }
+    document.write('<p>' + Figur.name + ' hat ' + Figur.punktestand + ' Punkte')
+    document.write('<p>' + Figur["name"] + ' hat ' + Figur["punktestand"] + ' Punkte')
+
+    Class Papierkorb {
+      //Eigenschaften
+      let groesse
+      let symbol
+      //Methode
+      function etwasReinlegen() {
+      }
+      function etwasRausnehme() {
+      }
+      function PapierkorbLeeren() {
+      }
+    }
+    let meinPapierkorb = new Papierkorb()
+    /*
+      Auto
+        Eigenschaften - Variablen
+          farbe
+          KM-Stand
+          Anzahl der Reifen
+          Geschwindigkeit
+        Methoden - Funtionen
+          anschalten
+          bremsen
+          tanken
+    */
+
+  </script>
+</body>
+</html>
+

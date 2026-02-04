@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  </style>
+</head>
+
+<body style="font-family:sans-serif">
+  <h1>Die Switch-Anweisung</h1>
+  <script>
+    let wuerfel = Math.floor(Math.random() * 9) + 0
+
+    /*
+    wuerfel = window.prompt('Gib eine Zahl zwischen 0 und 8 ein')
+    */
+   
+    document.write(wuerfel + '<br>')
+    
+    switch (wuerfel) {
+      case 1:
+        document.write('<p>Es wurde eine 1 gewürfelt.')
+        break;  
+      case 2:
+        document.write('<p>Es wurde eine 2 gewürfelt.')
+        break;
+      case 3:
+        document.write('<p>Es wurde eine 3 gewürfelt.')
+        break;
+      case 4:
+        document.write('<p>Es wurde eine 4 gewürfelt.')
+        break;
+      case 5:
+      case '5':
+        document.write('<p>Es wurde eine 5 gewürfelt.')
+        break;
+      case 6:
+      case '6':
+        document.write('<p>Es wurde eine 6 gewürfelt.')
+        break;
+      default:
+        document.write('<p>Es wurde keine gültiger Zahl gewürfelt.')
+    }
+    
+    /*
+    if (wuerfel == 1) {
+      document.write('Es wurde eine 1 gewürfelt.')
+    } else if (wuerfel == 2) {
+      document.write('Es wurde eine 2 gewürfelt.')
+    } else if (wuerfel == 3) {
+      document.write('Es wurde eine 3 gewürfelt.')
+    } else if (wuerfel == 4) {
+      document.write('Es wurde eine 4 gewürfelt.')
+    } else if (wuerfel == 5) {
+      document.write('Es wurde eine 5 gewürfelt.')
+    } else {
+      document.write('Es wurde eine 6 gewürfelt.')
+    }
+   */
+    
+  
+  </script>
+</body>
+
+</html>

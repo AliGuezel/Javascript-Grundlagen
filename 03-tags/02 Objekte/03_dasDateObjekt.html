@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body>
+  <h1>Das Date-Objekt</h1>
+  <script>
+    
+    let geburt = new Date(1971, 7, 3, 5, 43)
+    let geburt2 = Date.parse('1971-08-03')
+    let heute = new Date()
+
+    document.write('<p>' + heute)
+    document.write('<p>' + geburt)
+    document.write('<p>' + geburt2)
+
+  
+   //Ausgabe Tag
+   document.write('<p>Tag: ' + heute.getDate())
+
+    //Ausgabe Jahr
+   document.write('<p>Tag: ' + heute.getFullYear())
+
+    //Ausgabe Monat
+   document.write('<p>Monat: ' +  (heute.getMonth() + 1))
+
+  </script>
+
+</body>
+
+</html>

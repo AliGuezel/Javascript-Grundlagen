@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body>
+  <h1>Eingabe und Ausgabe</h1>
+  <script>
+
+    console.log("Test")
+    // Ausgabe über ein Dialogfenster
+    window.alert('Hallo Welt')
+
+    // Ausgabe über ein Dialogfenster mit Antwortoption
+    let antwort = window.confirm('Die Confirm Anweisung')
+    document.write(antwort)
+    document.write('<br>')
+
+    // Ausgabe mit Eingabe von Daten
+    let name = window.prompt('Bitte gib Deinen Namen ein')
+    document.write('Hallo ', name, '!')
+    document.write('<br>')
+
+    // Ausgabe über document.write, sollte nur beim Seitenaufbau verwendet werden
+    document.write('Hallo Welt')
+
+    // Ausgabe in der Konsole des Browsers. 
+    console.log('Dieser Text steht in der Konsole')
+
+
+  </script>
+</body>
+
+</html>
+
+<!--
+  de https://www.mediaevent.de/javascript/output.html
+  en https://www.w3schools.com/js/js_output.asp
+-->

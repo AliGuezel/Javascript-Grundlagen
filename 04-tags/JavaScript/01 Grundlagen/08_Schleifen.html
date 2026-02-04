@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    td, th {
+      text-align: center;
+      border:1px solid gray;
+      padding: 2px 5px;
+    }
+  </style>
+</head>
+
+<body style="font-family:sans-serif">
+  <h1>Schleifen</h1>
+  <h2>die while-Anweisung</h2>
+  <script>
+
+    /* die while-Anweisung
+      Mit Hilfe von while-Schleifen können Sie Anweisungen so lange wiederholen, wie die Bedigung, die im Kopf der Schleife formuliert wird, erfüllt ist. */
+
+    let zahl = 1
+    document.write('<table><tr><th>Zähler<th>Quadreatzahl')
+    while (zahl < 11) {
+      document.write('<tr><td>' + zahl + '<td>' + zahl * zahl)
+      zahl++ 
+    }
+    document.write('</table>')
+
+
+  </script>
+  <h2>die do-while-Anweisung</h2>
+  <script>
+    /*
+      die do-while-Anweisung
+      Die do-while-Schleife ist eine Variante der normalen while-Schleife. Der Unterschied zwischen den beiden Schleifen ist, das bei der while-Schleife vor dem Ausführen des Codes die Schleifenbedingung überprüft wird, während bei der do-while-Schleife zuerst der Code einmal ausgeführt wird und erst danach die Schleifenbedingung geprüft wird.
+    */
+    zahl = 1
+    document.write('<table><tr><th>Zähler<th>Quadreatzahl')
+    do {
+      document.write('<tr><td>' + zahl + '<td>' + zahl * zahl)
+      zahl++ 
+    } while (zahl <= 10)
+    document.write('</table>')
+  </script>
+  <h2>die for-Anweisung</h2>
+  <script>
+    document.write('<table><tr><th>Zähler<th>Quadreatzahl')
+    
+      for (zahl = 1; zahl <= 10; zahl++) {
+        document.write('<tr><td>' + zahl + '<td>' + zahl * zahl)
+      }
+    
+    document.write('</table><hr>')
+
+    let zahlen = [5, 10, 22, 45]
+    zahlen[10] = 1024
+    for (let i = 0; i < zahlen.length; i++) {
+      if (zahlen[i] === undefined) continue
+      document.write(zahlen[i] + ' - ')
+    }
+    document.write('<hr>')
+
+  </script>
+   </script>
+   <h2>die for-in-Anweisung</h2>
+   <script>
+    for (let zahl in zahlen) {
+      document.write(zahlen[zahl] + ' - ')
+    }
+    document.write('<p>')
+    let Person = new Array ()
+    Person.name = 'Dominic'
+    Person.alter = 51
+    Person.geburtstag = new Date(1971, 7, 3)
+
+    for (let eigenschaft in Person) {
+      document.write(eigenschaft + ': ' + Person[eigenschaft] + '<br>')
+    }
+     document.write('<hr>')
+
+
+
+     
+  </script>
+
+</body>
+
+</html>
+
+<!--
+  de https://wiki.selfhtml.org/wiki/JavaScript/Schleife
+  
+  en https://www.w3schools.com/js/js_loop_for.asp
+     https://www.w3schools.com/js/js_loop_while.asp
+
+-->
