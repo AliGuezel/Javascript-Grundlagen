@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body>
+  <!-- 
+    Erstellen Sie ein kleines Gedächtnis-Spiel.
+    Beim Aufrufen der Seite wird der Spieler durch ein Dialogfenster über die Regeln informiert:
+
+    "Merken Sie sich die Ziffernfolgen die gleich erscheinen, und geben Sie sie anschließend ein. 
+    Es erscheinen zunächst einmal drei Ziffern, dann vier Ziffern usw.
+    Sobald Sie eine Ziffernfolge falsch eingegeben haben, ist das Ende des Spiels erreicht."
+    Programmieren Sie das Gedächtnisspiel. Am Ende soll dem Spieler mitgeteilt werden wie gut er war.
+  -->
+  <h1>Aufgabe 03</h1>
+  <script>
+    let zufallszahl
+    let eingabezahl
+    let laenge = 3
+
+    window.alert("Merken Sie sich die Ziffernfolgen die gleich erscheinen, und geben Sie sie anschließend ein.  Es erscheinen zunächst einmal drei Ziffern, dann vier Ziffern usw. Sobald Sie eine Ziffernfolge falsch eingegeben haben, ist das Ende des Spiels erreicht.")
+
+    do {
+      zufallszahl = ''
+      for (let i = 1; i <= laenge; i++ ) {
+        zufallszahl = zufallszahl + Math.floor(Math.random() * 10)
+      }
+      window.alert('Merken Sie sich die Zahl: ' + zufallszahl)
+      eingabezahl = window.prompt('Bitte geben Sie die gemerkte Zahl ein:')
+      laenge++
+    } while (eingabezahl == zufallszahl)
+    document.write('Sie konnten sich ' + (laenge - 2) + ' Ziffern merken')
+
+  </script>
+</body>
+</html>
+

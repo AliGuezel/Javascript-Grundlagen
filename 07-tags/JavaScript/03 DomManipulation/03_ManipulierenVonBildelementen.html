@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+    }
+    .lampe {
+      display: inline-block;
+      width: 72px;
+      height: 72px;
+      background-image: url('../Übungen/img/off.jpg');
+    }
+    .lampe.an {
+      background-image: url('../Übungen/img/on.jpg');
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Mach alle Lichter an</h1>
+  
+    <span onclick="schalter(1)" class="lampe" id="lampe1"></span>
+    <span onclick="schalter(2)" class="lampe" id="lampe2"></span>
+    <span onclick="schalter(3)" class="lampe" id="lampe3"></span>
+    <span onclick="schalter(4)" class="lampe" id="lampe4"></span>
+    <span onclick="schalter(5)" class="lampe" id="lampe5"></span>
+    <p id="ausgabe"></p>
+
+    <!--<img id="lampe1" onclick="schalten()" src="../Übungen/img/off.jpg" alt="Lampe">-->
+  <script>
+    function schalter (nr) {
+      document.getElementById('lampe' + nr).classList.toggle('an')
+      if (nr < 5) document.getElementById('lampe' + (nr + 1)).classList.toggle('an')
+      if (nr > 1) document.getElementById('lampe' + (nr - 1)).classList.toggle('an')
+     
+      if (document.getElementsByClassName('an').length === 5) {
+        document.getElementById('ausgabe').innerHTML = 'Du hast gewonnen !!!'
+      } else {
+        document.getElementById('ausgabe').innerHTML = ''
+      }
+        
+    }
+
+  /*
+  function schalten() {
+    if (document.getElementById('lampe1').src.slice(-6, -4) == 'on') {
+      document.getElementById('lampe1').src = '../Übungen/img/off.jpg'
+    } else {
+      document.getElementById('lampe1').src = '../Übungen/img/on.jpg'
+    }
+  }
+  */
+  </script>
+</body>
+
+</html>

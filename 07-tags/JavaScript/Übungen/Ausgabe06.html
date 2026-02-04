@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    .design1 {
+      background: deepskyblue;
+      color: darkred;
+      font-family: Arial;
+    }
+    .design2 {
+      background: lightgreen;
+      color: darkorange;
+      font-family: 'Comic Sans MS';
+    }
+    .design3 {
+      background: brown;
+      color: white;
+      font-family: 'Times New Roman';
+    }
+    .design4 {
+      background: black;
+      color: white;
+      font-family: Courier;
+    }
+  </style>
+</head>
+<!--
+6)
+Erstellen Sie eine Internetseite, die abhängig von der Tageszeit ein anderes Design hat (Hintergund, Textfarbe, Schriftart).
+
+-->
+<script>
+  let stunde = new Date().getHours()
+  if (stunde < 7) {
+    document.write('<body class="design1">')
+  } else if (stunde < 13) {
+    document.write('<body class="design2">')
+  } else if (stunde < 19) {
+    document.write('<body class="design3">')
+  } else {
+    document.write('<body class="design4">')
+  }
+</script>
+
+  <h1>Überschrift</h1>
+
+</body>
+
+</html>

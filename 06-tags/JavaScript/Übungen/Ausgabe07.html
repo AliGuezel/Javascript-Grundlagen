@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body>
+  <h1>Lottozahlen</h1>
+  <script>
+    let zahl1, zahl2, zahl3, zahl4, zahl5, zahl6
+
+    zahl1 = Math.floor(Math.random()*49) + 1
+    document.write('<button>' + zahl1 + '</button>')
+
+    do {
+      zahl2 = Math.floor(Math.random()*49) + 1
+    } while (zahl1 === zahl2)
+    document.write('<button>' + zahl2 + '</button>')
+
+
+    do {
+      zahl3 = Math.floor(Math.random()*49) + 1
+    } while (zahl1 === zahl3 || zahl2 === zahl3)
+    document.write('<button>' + zahl3 + '</button>')
+
+
+    do {
+      zahl4 = Math.floor(Math.random()*49) + 1
+    } while (zahl1 === zahl4 || zahl2 === zahl4 || zahl3 === zahl4)
+    document.write('<button>' + zahl4 + '</button>')
+
+
+    do {
+      zahl5 = Math.floor(Math.random()*49) + 1
+    } while (zahl1 === zahl5 || zahl2 === zahl5 || zahl3 === zahl5 || zahl4 === zahl5)
+    document.write('<button>' + zahl5 + '</button>')
+
+
+    do {
+      zahl6 = Math.floor(Math.random()*49) + 1
+    } while (zahl1 === zahl6 || zahl2 === zahl6 || zahl3 === zahl6 || zahl4 === zahl6 || zahl5 === zahl6)
+    document.write('<button>' + zahl6 + '</button>')
+
+    
+
+  </script>
+</body>
+
+</html>

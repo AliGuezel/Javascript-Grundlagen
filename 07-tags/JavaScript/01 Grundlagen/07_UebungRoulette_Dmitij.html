@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    body {
+      color: #FFFFFF;
+      background: darkgreen;
+    }
+    #ausgabe {
+      margin: 50px;
+      font-size: 40px;
+    }
+    #historie {
+      border: 2px inset gray;
+      width: 70px;
+      height: 80vh;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      overflow: hidden;
+      background: white;;
+    }
+    #historie span {
+      font-size: 24px;
+      display: block;
+      text-align: center;
+      border-bottom: 1px solid gray;
+    }
+    #geld{
+      position: absolute;
+      left: 8px;
+      top: 630px;
+    }
+    #ein{
+      position: absolute;
+      left: 8px;
+      top: 590px;
+    }
+    gut{
+      position: absolute;
+      left: 80px;
+      top: 590px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>Roulettspiel</h1>
+  <!-- <button onclick="spielen()">Roulette spielen</button> -->
+  <img src="img/roulette.png" alt="Ein Roulett-Tisch" usemap="#roulette">
+  <h4 id="ein">Einsatz:</h4>
+  <input type="text" name="geld" id="geld" value="50">
+  
+  <map name="roulette">
+    <area shape="poly" coords="26, 326, 126, 328, 126, 460, 26, 441" href="javascript:einsatz('noir')" title="NOIR">
+    <area shape="poly" coords="376, 326, 377, 438, 275, 459, 275, 328" href="javascript:einsatz('rouge')" title="ROUGE">
+    <area shape="poly" coords="276, 58, 377, 79, 378, 191, 276, 190" href="javascript:einsatz('manque')" title="MANQUE">
+    <area shape="poly" coords="25, 79, 125, 61, 125, 194, 24, 195" href="javascript:einsatz('passe')" title="PASSE">
+    <area shape="rect" coords="276, 191, 377, 326" href="javascript:einsatz('impair')" title="IMPAIR">
+    <area shape="rect" coords="26, 195, 124, 324" href="javascript:einsatz('pair')" title="PAIR">
+    <area shape="rect" coords="224, 427, 276, 458" href="javascript:einsatz('36')" title="36">
+    <area shape="rect" coords="175, 427, 225, 458" href="javascript:einsatz('35')" title="35">
+    <area shape="rect" coords="125, 427, 175, 457" href="javascript:einsatz('34')" title="34">
+    <area shape="rect" coords="225, 394, 276, 424" href="javascript:einsatz('33')" title="33">
+    <area shape="rect" coords="176, 394, 225, 424" href="javascript:einsatz('32')" title="32">
+    <area shape="rect" coords="126, 394, 175, 424" href="javascript:einsatz('31')" title="31">
+    <area shape="rect" coords="225, 360, 276, 391" href="javascript:einsatz('30')" title="30">
+    <area shape="rect" coords="175, 360, 225, 391" href="javascript:einsatz('29')" title="29">
+    <area shape="rect" coords="126, 359, 175, 391" href="javascript:einsatz('28')" title="28">
+    <area shape="rect" coords="226, 328, 276, 358" href="javascript:einsatz('27')" title="27">
+    <area shape="rect" coords="176, 328, 225, 357" href="javascript:einsatz('26')" title="26">
+    <area shape="rect" coords="126, 327, 175, 357" href="javascript:einsatz('25')" title="25">
+    <area shape="rect" coords="226, 293, 276, 325" href="javascript:einsatz('24')" title="24">
+    <area shape="rect" coords="176, 294, 225, 325" href="javascript:einsatz('23')" title="23">
+    <area shape="rect" coords="126, 293, 176, 325" href="javascript:einsatz('22')" title="22">
+    <area shape="rect" coords="228, 261, 276, 291" href="javascript:einsatz('21')" title="21">
+    <area shape="rect" coords="176, 260, 226, 291" href="javascript:einsatz('20')" title="20">
+    <area shape="rect" coords="126, 260, 176, 291" href="javascript:einsatz('19')" title="19">
+    <area shape="rect" coords="227, 228, 276, 258" href="javascript:einsatz('18')" title="18">
+    <area shape="rect" coords="176, 226, 227, 258" href="javascript:einsatz('17')" title="17">
+    <area shape="rect" coords="126, 228, 174, 258" href="javascript:einsatz('16')" title="16">
+    <area shape="rect" coords="227, 194, 276, 226" href="javascript:einsatz('15')" title="15">
+    <area shape="rect" coords="177, 194, 226, 225" href="javascript:einsatz('14')" title="14">
+    <area shape="rect" coords="126, 194, 175, 225" href="javascript:einsatz('13')" title="13">
+    <area shape="rect" coords="227, 160, 276, 192" href="javascript:einsatz('12')" title="12">
+    <area shape="rect" coords="176, 160, 226, 192" href="javascript:einsatz('11')" title="11">
+    <area shape="rect" coords="126, 161, 175, 192" href="javascript:einsatz('10')" title="10">
+    <area shape="rect" coords="227, 129, 276, 158" href="javascript:einsatz('9')" title="9">
+    <area shape="rect" coords="176, 128, 225, 158" href="javascript:einsatz('8')" title="8">
+    <area shape="rect" coords="126, 127, 175, 158" href="javascript:einsatz('7')" title="7">
+    <area shape="rect" coords="227, 94, 276, 126" href="javascript:einsatz('6')" title="6">
+    <area shape="rect" coords="175, 94, 226, 125" href="javascript:einsatz('5')" title="5">
+    <area shape="rect" coords="126, 93, 175, 125" href="javascript:einsatz('4')" title="4">
+    <area shape="rect" coords="126, 25, 276, 59" href="javascript:einsatz('0')" title="0">
+    <area shape="rect" coords="228, 59, 276, 92" href="javascript:einsatz('3')" title="3">
+    <area shape="rect" coords="175, 59, 226, 93" href="javascript:einsatz('2')" title="2">
+    <area shape="rect" coords="126, 60, 175, 92" href="javascript:einsatz('1')" title="1">
+  </map>
+
+  <div id="ausgabe"></div>
+  <div id="gut">GUTHABEN: 1000</div>
+  <div id="historie"></div>
+  <script>
+    let guthaben = 1000
+    let farben = ['green', 'red', 'black', 'red','black', 'red','black', 'red','black', 'red', 'black','black', 'red','black', 'red','black', 'red','black', 'red', 'red' ,'black', 'red','black', 'red','black', 'red','black', 'red', 'black' ,'black', 'red','black', 'red','black', 'red','black', 'red']
+
+    function einsatz (art) {
+      let einsat = Number(document.querySelector("#geld").value)
+      let zahl = spielen()
+      //schwarz
+      if (art === 'noir') {
+        if (farben[zahl] == 'black') {
+          guthaben -= einsat
+          guthaben += (einsat*2)
+          document.getElementById("gut").innerHTML = "GUTHABEN: " + guthaben
+        } else if (farben[zahl] == 'red'){
+          guthaben -= einsat
+          document.getElementById("gut").innerHTML = "GUTHABEN: " +  guthaben
+        }else{document.getElementById("gut").innerHTML = "GUTHABEN: " +  guthaben}
+      }
+      //rot
+      if (art === 'rouge') {
+        if (farben[zahl] == 'red') {
+          guthaben -= einsat
+          guthaben += (einsat*2)
+          document.getElementById("gut").innerHTML = "GUTHABEN: " +  guthaben
+        } else if (farben[zahl] == 'black'){
+          guthaben -= einsat
+          document.getElementById("gut").innerHTML = "GUTHABEN: " +  guthaben
+        }else{document.getElementById("gut").innerHTML = "GUTHABEN: " +  guthaben}
+      }
+      //gerade
+      if (art === 'pair') {
+        if (zahl %2 === 0) {
+          guthaben -= einsat
+          guthaben += (einsat*2)
+          document.getElementById("gut").innerHTML = "GUTHABEN: " +  guthaben
+        } else if (zahl %2 !== 0){
+          guthaben -= einsat
+          document.getElementById("gut").innerHTML = "GUTHABEN: " +  guthaben
+        }else{document.getElementById("gut").innerHTML = "GUTHABEN: " +  guthaben}
+      }
+      //ungerade
+      if (art === 'impair') {
+        if (zahl %2 !== 0) {
+          guthaben -= einsat
+          guthaben += (einsat*2)
+          document.getElementById("gut").innerHTML = "GUTHABEN: " +  guthaben
+        } else if (zahl %2 === 0){
+          guthaben -= einsat
+          document.getElementById("gut").innerHTML = "GUTHABEN: " +  guthaben
+        }else{document.getElementById("gut").innerHTML = "GUTHABEN: " +  guthaben}
+      }
+      //klein
+      if (art === 'manque') {
+        if (zahl < 19 && zahl !== 0) {
+          guthaben -= einsat
+          guthaben += (einsat*2)
+          document.getElementById("gut").innerHTML = "GUTHABEN: " +  guthaben
+        } else if (zahl > 18){
+          guthaben -= einsat
+          document.getElementById("gut").innerHTML = "GUTHABEN: " +  guthaben
+        }else{document.getElementById("gut").innerHTML = "GUTHABEN: " +  guthaben}
+      }
+      //groß
+      if (art === 'passe') {
+        if (zahl > 18) {
+          guthaben -= einsat
+          guthaben += (einsat*2)
+          document.getElementById("gut").innerHTML = "GUTHABEN: " +  guthaben
+        } else if (zahl < 19 && zahl !== 0){
+          guthaben -= einsat
+          document.getElementById("gut").innerHTML = "GUTHABEN: " +  guthaben
+        }else{document.getElementById("gut").innerHTML = "GUTHABEN: " +  guthaben}
+      }
+      //zahl
+      for(let i=0;i<37;i++){
+        if (art === i.toString() && i === zahl) {
+          guthaben -= einsat
+          guthaben += (einsat*36)
+          document.getElementById("gut").innerHTML = "GUTHABEN: " +  guthaben
+        } else if (art === i.toString() && i !== zahl){
+          guthaben -= einsat
+          document.getElementById("gut").innerHTML = "GUTHABEN: " +  guthaben
+        }
+      }
+
+    }
+
+    function spielen () {
+      if (document.querySelector('#ausgabe span') !== null) {
+        document.getElementById('historie').innerHTML = document.querySelector('#ausgabe span').outerHTML + document.getElementById('historie').innerHTML
+      }
+      let zufall = Math.floor(Math.random()*37)
+      let ausgabe = (zufall === 0) ? '<span style="color:' + farben[zufall] + '">ZERO</span>' : '<span style="color:' + farben[zufall] + '">' + zufall + '</span>'
+      /*
+      if (zufall !== 0) {
+        ausgabe += (zufall > 18) ? '<br>PASSE' : '<br>MANQUE'
+        ausgabe += (zufall % 2 === 0) ?  '<br>PAIR' :  '<br>IMPAIR'
+        ausgabe += (farben[zufall] === 'red') ? '<br>ROUGE' : '<br>NOIR'
+      }
+      */
+      document.getElementById('ausgabe').innerHTML = ausgabe
+
+      return (zufall)   
+      /*
+      if (zufall === 0) {
+        ausgabe = 'ZERO'
+      } else {
+        ausgabe = zufall
+      }
+
+      if (zufall > 18) {
+        ausgabe += '<br>PASSE'
+      } else if (zufall > 0) {
+        ausgabe += '<br>MANQUE'
+      }
+
+      if (zufall !== 0) {
+        if (zufall % 2 === 0) {
+          ausgabe += '<br>PAIR'
+        } else {
+          ausgabe += '<br>IMPAIR'
+        }
+      }
+
+      if (zufall !== 0) {
+        if (farben[zufall] === 'red') {
+          ausgabe += '<br>ROUGE'
+        } else {
+          ausgabe += '<br>NOIR'
+        }
+      }
+      document.getElementById('ausgabe').innerHTML = ausgabe
+      */
+    }
+
+  </script>
+</body>
+
+</html>

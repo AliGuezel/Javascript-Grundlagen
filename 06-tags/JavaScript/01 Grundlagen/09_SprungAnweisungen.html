@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    td,
+    th {
+      text-align: center;
+      border: 1px solid gray;
+      padding: 2px 5px;
+    }
+  </style>
+</head>
+
+<body style="font-family:sans-serif">
+  <h1>Sprunganweisungen</h1>
+  <script>
+    document.write('<table><tr><th>Zähler<th>Quadreatzahl')
+
+    for (zahl = 1; zahl <= 10; zahl++) {
+      // continue bricht den aktuellen Schleifendurchlauf ab und springt zum Anfang der Schleife
+      if (zahl == 3) continue
+      document.write('<tr><td>' + zahl + '<td>' + zahl * zahl)
+      // break   bricht den aktuellen Schleifendurchlauf ab und springt zum Ende der Schleife
+      if (zahl == 8) break
+    }
+    document.write('</table>')
+
+    
+    let zufall 
+    /* 
+      Math.random()                       Zahl zwischen   0   und  0.99999999
+      Math.random() * 6                   Zahl zwischen   0   und  5.99999999
+      Math.floor(Math.random() * 6)       Zahl zwischen   0   und  5
+      Math.floor(Math.random() * 6) + 1   Zahl zwischen   1   und  6
+   
+    let wurf20 = 0
+    for (let i = 1; i <= 1000; i++) {
+      zufall = Math.floor(Math.random() * 20) + 1
+      if (zufall == 20) wurf20++
+    }
+    document.write('<p>Bei 1000 Würfen ist die 20 insgesamt ' + wurf20 + ' Mal gefallen, dass sind ' + ( 100/1000 * wurf20) + ' Prozent der Würfe')
+  */
+  do {
+    zufall = Math.floor(Math.random() * 20) + 1
+    if (zufall % 2 == 1) continue
+    document.write('<p> ' + zufall)
+  } while (zufall != 20)
+  
+  </script>
+</body>
+
+</html>
+
+<!--
+  de https://wiki.selfhtml.org/wiki/JavaScript/Schleife#Kontrolle_innerhalb_von_Schleifen_-_break_und_continue
+  en https://www.w3schools.com/js/js_break.asp
+-->

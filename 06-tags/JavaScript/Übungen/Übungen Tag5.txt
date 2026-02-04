@@ -1,0 +1,20 @@
+Aufgabe 13
+Gib auf einer Internetseite mit JavaScript das 1 x 1 als Tabelle aus.
+
+Aufgabe 14
+Schreiben Sie ein kurzes Programm, das jede Zahl von 1 bis 100 in einer neuen Zeile (oder Spalte) ausgibt.
+Für jedes Vielfache von 3, schreibe “Fizz” anstelle der Zahl.
+Für jedes Vielfache von 5, schreibe “Buzz” anstelle der Zahl.
+Für Zahlen, die ein Vielfaches von 3 und 5 sind, schreibe “FizzBuzz” statt der Zahl.
+
+Aufgabe 15
+Die Aufgabe ist ein Javascript Programm zu schreiben das nach folgenden Geburtsdaten fragt Tag,Monat,Jahr Stunde,Minute und dann das Alter in Sekunden ausgibt.
+
+Aufgabe 16
+let myArray = [1, 2, 3, 4, "hans", "meier", 7, 8 ,9]
+  Geben Sie die Anzahl der Elemente in diesem Array aus.
+  Löschen Sie das Element mit dem Index 2. (Elementinhalt: 3)
+  Ermitteln Sie den Index des Elements "meier" und speichern Sie diesen in eine Variable ab.
+  Löschen Sie das Element mit dem Inhalt "meier" aus dem Array.
+  Fügen Sie ein neues Element ("anfang") an dem Array-Anfang ein.
+  Fügen Sie ein neues Element ("ende") an dem Array an.

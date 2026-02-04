@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body style="font-family:sans-serif">
+  <h1>Übung if &amp; Schleife</h1>
+  <script>
+    /*
+      Der Beutzer soll eine Zahl eingeben.
+      Die Eingabe soll bei einer ungültigen Eingabe wiederholt werden.
+      Das Programm gibt aus, ob die Zahl größer, gleich oder kleiner 50 war.
+    */
+    let eingabe
+    
+    eingabe = window.prompt('Bitte gebe eine gültige Zahl ein')
+
+    while (window.isNaN(eingabe)) {
+      window.alert('Ihre Eingabe war keine gültige Zahl')
+      eingabe = window.prompt('Bitte gebe eine gültige Zahl ein')
+    } 
+    
+    if (eingabe == 50) {
+      document.write('Die eingegebene Zahl ist 50')
+    } else if (eingabe < 50) {
+      document.write('Die eingegebene Zahl ist kleiner als 50')
+    } else {
+      document.write('Die eingegebene Zahl ist größer als 50')
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+  </style>
+</head>
+
+<body style="font-family:sans-serif">
+  <h1>Zahlenraten</h1>
+  <script>
+    let zufallszahl = Math.floor(Math.random() * 100) + 1
+    let ratezahl
+    let versuche = 0
+    alert('Ich denke mir eine Zahl zwischen 1 und 100. Schaffst Du es, diese Zahl zu erraten?')
+    do {
+      ratezahl = window.prompt('Bitte gib eine Zahl ein')
+      versuche++
+      if (ratezahl > zufallszahl) window.alert('Deine Zahl ist zu groß')
+      if (ratezahl < zufallszahl) window.alert('Deine Zahl ist zu klein')
+    } while (ratezahl != zufallszahl)
+    window.alert('Du hast richtig geraten. Die gesuchte Zahl war ' + zufallszahl + '. Du hast ' + versuche + ' Rateversuche gebraucht')
+    
+  
+  </script>
+</body>
+
+</html>

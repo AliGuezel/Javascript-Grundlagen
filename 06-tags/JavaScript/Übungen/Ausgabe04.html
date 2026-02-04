@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Einführung in Javascript</title>
+</head>
+
+<body>
+  <!-- 
+    Die Benutzer soll aufgeforder werden Kredithöhe, Laufzeit in Monaten und Zinssatz einzugeben. 
+    Der Kreditrechner soll den gesammten Rückzahlungsbetrag und die einzelnen Raten ausgeben.
+
+    Rückzahlungsbetrag = Kreditbetrag * Math.pow((1+Zinssatz/100),(Laufzeit/12))
+  -->
+  <h1>Aufgabe 04</h1>
+  <script>
+    let kreditbetrag = Number(window.prompt('Wieviel Geld wollen Sie sich leihen?'))
+    let zinssatz = Number(window.prompt('Wie hoch ist der Zinssatz?'))
+    let laufzeit = Number(window.prompt('In wievielen Monaten möchten Sie den Kredit abbezahlen?'))
+    
+    let rueckzahlung =  kreditbetrag * Math.pow((1+zinssatz/100),(laufzeit/12))
+  
+    document.write('<p>Wenn Sie sich ' + kreditbetrag.toFixed(2) + ' Euro zu ' + zinssatz.toFixed(1) + '% Zinsel leihen, müssen Sie ' + rueckzahlung.toFixed(2) + ' Euro zurückzahlen.</p>')
+
+    document.write('<p>' + laufzeit + ' Raten zu ' + (rueckzahlung / laufzeit).toFixed(2) + ' Euro</p>')
+
+   
+
+  </script>
+</body>
+</html>
+
